@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Koala</string>
+    <!--General-->
+    <string name="app_name">DISO Koala</string>
+    <!--Home-->
+    <string name="titulo_inicio_pregunta">¿Que desea hacer?</string>
+    <string name="boton_vender">Vender</string>
+    <string name="boton_lista">Lista de Productos</string>
+    <string name="boton_agregar">Agregar Producto</string>
+    <!--Agregar/Editar Producto-->
+    <string name="titulo_producto">Información Producto</string>
+    <string name="nombre_producto">Nombre</string>
+    <string name="valor_producto">Valor</string>
+    <string name="descripcion_producto">Descripción</string>
+    <string name="boton_aceptar_producto">Aceptar</string>
 </resources>
