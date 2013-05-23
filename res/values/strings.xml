@@ -2,6 +2,7 @@
 <resources>
     <!--General-->
     <string name="app_name">DISO Koala</string>
+    <string name="name">Nombre</string>
     <!--Home-->
     <string name="titulo_inicio_pregunta">¿Que desea hacer?</string>
     <string name="boton_vender">Vender</string>
@@ -13,4 +14,9 @@
     <string name="valor_producto">Valor</string>
     <string name="descripcion_producto">Descripción</string>
     <string name="boton_aceptar_producto">Aceptar</string>
+    <!--Sale-->
+    <string name="title_sale">Venta</string>
+    <string name="add_product">Agregar Producto</string>
+    <string name="product_value">Valor</string>
+    <string name="total_sale">Total:</string>
 </resources>

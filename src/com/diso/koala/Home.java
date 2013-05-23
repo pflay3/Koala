@@ -18,12 +18,25 @@ public class Home extends Activity {
     }
 
     void Events(){
-        final Button btnAgregar = (Button)findViewById(R.id.btnAgregar);
-        btnAgregar.setOnClickListener(
+        // Agregar/Editar
+        final Button btnAddEdit = (Button)findViewById(R.id.btnAgregar);
+        btnAddEdit.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(Home.this, ProductGUI.class);
+                        startActivity(intent);
+                    }
+                }
+        );
+
+        // Vender
+        final Button btnSale = (Button)findViewById(R.id.btnVender);
+        btnSale.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Home.this, SaleGUI.class);
                         startActivity(intent);
                     }
                 }
