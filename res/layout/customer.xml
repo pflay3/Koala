@@ -26,41 +26,15 @@
                 android:textSize="15sp" />
 
         <EditText
-                android:id="@+id/txtNombre"
+                android:id="@+id/txtCustomer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"/>
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/valor_producto"
-                android:textSize="15sp" />
-
-        <EditText
-                android:id="@+id/txtValor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number" />
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/descripcion_producto"
-                android:textSize="15sp"
-                android:layout_columnSpan="2" />
-
-        <EditText
-                android:id="@+id/txtDescripcion"
-                android:layout_width="match_parent"
-                android:layout_height="100sp"
-                android:inputType="text"
-                android:layout_columnSpan="2" />
-
     </GridLayout>
 
     <Button
-            android:id="@+id/btnVender"
+            android:id="@+id/btnAddCustomer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_ok" />

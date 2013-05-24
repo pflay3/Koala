@@ -8,7 +8,7 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/title_product_list"
+            android:text="@string/title_customer_list"
             android:textSize="20sp" />
 
     <TableLayout
@@ -19,23 +19,23 @@
 
         <TableRow>
             <EditText
-            android:id="@+id/txtProduct"
-            android:layout_width="0dp"
-            android:layout_weight=".75"
-            android:layout_height="wrap_content"
-            android:inputType="text"/>
+                    android:id="@+id/txtCustomer"
+                    android:layout_width="0dp"
+                    android:layout_weight=".75"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"/>
 
             <Button
-                android:id="@+id/btnSearchProduct"
-                android:layout_width="0dp"
-                android:layout_weight=".25"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_search" />
+                    android:id="@+id/btnSearchCustomer"
+                    android:layout_width="0dp"
+                    android:layout_weight=".25"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_search" />
         </TableRow>
 
     </TableLayout>
 
-    <ListView android:id="@+id/lstProducts"
+    <ListView android:id="@+id/lstCustomers"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content" />
 

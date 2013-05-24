@@ -7,25 +7,37 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/titulo_inicio_pregunta"
+            android:text="@string/title_home"
             android:textSize="30sp" />
 
     <Button
-            android:id="@+id/btnVender"
+            android:id="@+id/btnSale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/boton_vender" />
+            android:text="@string/btn_sale" />
 
     <Button
-            android:id="@+id/btnLista"
+            android:id="@+id/btnProductList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/boton_lista" />
+            android:text="@string/btn_product_list" />
 
     <Button
-            android:id="@+id/btnAgregar"
+            android:id="@+id/btnAddProduct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/boton_agregar" />
+            android:text="@string/btn_add_product" />
+
+    <Button
+            android:id="@+id/btnCustomerList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_customer_list" />
+
+    <Button
+            android:id="@+id/btnAddCustomer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_add_customer" />
 </LinearLayout>
 

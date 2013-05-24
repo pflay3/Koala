@@ -11,11 +11,35 @@
             android:text="@string/title_sale"
             android:textSize="20sp" />
 
-    <Button
-            android:id="@+id/btnVender"
+    <TableLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/add_product" />
+            android:layout_margin="8sp" >
+
+        <TableRow>
+            <Button
+                    android:id="@+id/btnAddCustomer"
+                    android:layout_width="0dp"
+                    android:layout_weight=".50"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_customer" />
+
+            <Button
+                    android:id="@+id/btnAddProduct"
+                    android:layout_width="0dp"
+                    android:layout_weight=".50"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_product" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_customer"
+            android:layout_marginLeft="8sp" />
 
     <RelativeLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
