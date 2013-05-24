@@ -219,4 +219,5 @@ pip-log.txt
 *.ipr
 *.iws
 .idea/
+.idea/*.*
 local.properties
