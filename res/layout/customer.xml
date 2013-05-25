@@ -15,7 +15,7 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:rowCount="4"
+            android:rowCount="1"
             android:columnCount="2"
             android:layout_margin="8sp" >
 
@@ -32,6 +32,14 @@
                 android:inputType="text"/>
 
     </GridLayout>
+
+    <TextView
+            android:id="@+id/lblCustomerError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/error_message_customer"
+            android:background="#FC0505"
+            android:visibility="invisible"/>
 
     <Button
             android:id="@+id/btnAddCustomer"
