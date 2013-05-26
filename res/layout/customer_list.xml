@@ -21,14 +21,14 @@
             <EditText
                     android:id="@+id/txtCustomer"
                     android:layout_width="0dp"
-                    android:layout_weight=".75"
+                    android:layout_weight=".70"
                     android:layout_height="wrap_content"
                     android:inputType="text"/>
 
             <Button
                     android:id="@+id/btnSearchCustomer"
                     android:layout_width="0dp"
-                    android:layout_weight=".25"
+                    android:layout_weight=".30"
                     android:layout_height="wrap_content"
                     android:text="@string/btn_search" />
         </TableRow>

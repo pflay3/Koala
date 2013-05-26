@@ -6,10 +6,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.diso.koala.db.CustomerHelper;
+import com.diso.koala.db.*;
 
 public class CustomerGUI extends Activity {
     CustomerHelper customerHelper;
+    KoalaDataBase koalaDataBase;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +35,7 @@ public class CustomerGUI extends Activity {
         if (!txtCustomer.getText().toString().trim().equals("")){
             ChangeVisibilityErrorMessage(false);
             if(customerHelper == null){
-                customerHelper = new CustomerHelper(this, getString(R.string.db_name), null, R.integer.db_version);
+                customerHelper = new CustomerHelper(this, getString(R.string.db_name));
             }
 
             customerHelper.Insert(txtCustomer.getText().toString());

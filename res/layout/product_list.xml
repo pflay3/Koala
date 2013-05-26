@@ -21,21 +21,42 @@
             <EditText
             android:id="@+id/txtProduct"
             android:layout_width="0dp"
-            android:layout_weight=".75"
+            android:layout_weight=".70"
             android:layout_height="wrap_content"
             android:inputType="text"/>
 
             <Button
                 android:id="@+id/btnSearchProduct"
                 android:layout_width="0dp"
-                android:layout_weight=".25"
+                android:layout_weight=".30"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_search" />
         </TableRow>
 
     </TableLayout>
 
-    <ListView android:id="@+id/lstProducts"
+    <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8sp" >
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textSize="15sp" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_price"
+                android:textSize="15sp"
+                android:layout_alignParentRight="true" />
+
+    </RelativeLayout>
+
+    <ListView android:id="@+id/lstProductList"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content" />
 

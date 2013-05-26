@@ -8,7 +8,7 @@
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/titulo_producto"
+            android:text="@string/title_product"
             android:textSize="20sp" />
 
     <GridLayout
@@ -26,7 +26,7 @@
                 android:textSize="15sp" />
 
         <EditText
-                android:id="@+id/txtNombre"
+                android:id="@+id/txtProductName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"/>
@@ -34,11 +34,11 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/valor_producto"
+                android:text="@string/txt_product_price"
                 android:textSize="15sp" />
 
         <EditText
-                android:id="@+id/txtValor"
+                android:id="@+id/txtProductPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number" />
@@ -46,12 +46,24 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/descripcion_producto"
+                android:text="@string/txt_barcode"
+                android:textSize="15sp" />
+
+        <EditText
+                android:id="@+id/txtProductBarCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_product_description"
                 android:textSize="15sp"
                 android:layout_columnSpan="2" />
 
         <EditText
-                android:id="@+id/txtDescripcion"
+                android:id="@+id/txtProductDescription"
                 android:layout_width="match_parent"
                 android:layout_height="100sp"
                 android:inputType="text"
@@ -59,8 +71,16 @@
 
     </GridLayout>
 
+    <TextView
+            android:id="@+id/lblProductError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/error_message_product"
+            android:background="#FC0505"
+            android:visibility="invisible"/>
+
     <Button
-            android:id="@+id/btnVender"
+            android:id="@+id/btnAddProduct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_ok" />

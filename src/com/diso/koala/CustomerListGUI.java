@@ -60,7 +60,7 @@ public class CustomerListGUI extends Activity {
 
     void ValidateCustomerHelper(){
         if(customerHelper == null){
-            customerHelper = new CustomerHelper(this, getString(R.string.db_name), null, R.integer.db_version);
+            customerHelper = new CustomerHelper(this, getString(R.string.db_name));
         }
     }
 }

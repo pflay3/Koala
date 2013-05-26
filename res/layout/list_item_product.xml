@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<TableLayout
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:stretchColumns="0,1"
         android:layout_margin="8sp" >
 
-    <TableRow>
-
         <TextView
+                android:id="@+id/lblProductName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/name"
                 android:textSize="15sp" />
 
         <TextView
+                android:id="@+id/lblProductPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/product_value"
-                android:textSize="15sp" />
+                android:text="@string/product_price"
+                android:textSize="15sp"
+                android:layout_alignParentRight="true" />
 
-    </TableRow>
-
-</TableLayout>
+</RelativeLayout>

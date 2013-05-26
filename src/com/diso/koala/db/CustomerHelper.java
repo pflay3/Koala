@@ -1,38 +1,22 @@
 package com.diso.koala.db;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.database.*;
-import android.graphics.Region;
+import com.diso.koala.R;
 
-public class CustomerHelper extends SQLiteOpenHelper{
+public class CustomerHelper{
 
-    String sqlCreate = "CREATE TABLE Customer (id INTEGER PRIMARY KEY NOT NULL, name TEXT NOT NULL)";
-    String sqlDrop = "DROP TABLE IF EXISTS Customer";
+    KoalaDataBase kdb;
 
-    public CustomerHelper(Context context, String name, CursorFactory factory, int version) {
-        super(context, name, factory, version);
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db){
-        if(db.isReadOnly()){ db = this.getWritableDatabase(); }
-        db.execSQL(sqlCreate);
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int previousVersion, int newVersion) {
-        if (newVersion > previousVersion){
-            db.execSQL(sqlDrop);
-            db.execSQL(sqlCreate);
-        }
+    public CustomerHelper(Context context, String dbName) {
+        kdb = new KoalaDataBase(context, dbName, null, R.integer.db_version);
     }
 
     //region SQL-Methods
     private Customer[] Select(String sqlSelect){
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = kdb.getReadableDatabase();
         Cursor c = db.rawQuery(sqlSelect, null);
         Customer[] customers = new Customer[c.getCount()];
         int pos = 0;
@@ -58,7 +42,7 @@ public class CustomerHelper extends SQLiteOpenHelper{
     }
 
     private void ExecuteNonQuery(String sqlNonQuery){
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = kdb.getWritableDatabase();
         db.execSQL(sqlNonQuery);
     }
 
@@ -67,9 +51,9 @@ public class CustomerHelper extends SQLiteOpenHelper{
         ExecuteNonQuery(String.format(sql,name));
     }
 
-    public void Update(int id){
-        String sql = "UPDATE Customer SET name = '?' WHERE id = %d";
-        ExecuteNonQuery(String.format(sql,id));
+    public void Update(String name, int id){
+        String sql = "UPDATE Customer SET name = '%s' WHERE id = %d";
+        ExecuteNonQuery(String.format(sql, name, id));
     }
     //endregion
 }

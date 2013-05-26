@@ -29,28 +29,36 @@
     <list default="true" id="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" name="Default" comment="" />
     <ignored path="Koala.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369451463879" ignored="false" />
-    <file path="/strings.xml" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369456864241" ignored="false" />
+    <file path="/Dummy.txt" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369537884939" ignored="false" />
+    <file path="/strings.xml" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369542545709" ignored="false" />
     <file path="/main.xml" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369436583370" ignored="false" />
     <file path="/a.xml" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369455047164" ignored="false" />
     <file path="$PROJECT_DIR$/.idea/workspace.xml" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369279552130" ignored="false" />
-    <file path="/fragment.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369460705094" ignored="false" />
+    <file path="/fragment.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369547045802" ignored="false" />
     <file path="/producto.xml" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369277398238" ignored="false" />
     <file path="/Home.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369437110736" ignored="false" />
     <file path="/ProductoGUI.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369276767414" ignored="false" />
     <file path="/SaleGUI.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369277802272" ignored="false" />
     <file path="/sale.xml" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369435616358" ignored="false" />
-    <file path="/product_list.xml" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369437438531" ignored="false" />
-    <file path="/ProductListGUI.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369438040712" ignored="false" />
+    <file path="/product_list.xml" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369549240787" ignored="false" />
+    <file path="/ProductListGUI.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369544030007" ignored="false" />
     <file path="/customer.xml" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369457088395" ignored="false" />
     <file path="/customer_list.xml" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369436144117" ignored="false" />
-    <file path="/CustomerGUI.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369457966122" ignored="false" />
+    <file path="/CustomerGUI.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369548290947" ignored="false" />
     <file path="/CustomerListGUI.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369460399019" ignored="false" />
-    <file path="/CustomerHelper.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369460157793" ignored="false" />
-    <file path="/Customer.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369459133039" ignored="false" />
+    <file path="/CustomerHelper.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369548675332" ignored="false" />
+    <file path="/Customer.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369539474435" ignored="false" />
     <file path="/a.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369455065019" ignored="false" />
     <file path="/sample.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369455063284" ignored="false" />
-    <file path="/a.dummy" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369457683572" ignored="false" />
+    <file path="/a.dummy" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369544402638" ignored="false" />
+    <file path="/product.xml" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369541124304" ignored="false" />
+    <file path="/Product.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369539673248" ignored="false" />
+    <file path="/ProductHelper.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369548724459" ignored="false" />
+    <file path="/ProductGUI.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369544949832" ignored="false" />
+    <file path="/ProductAdapter.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369550059633" ignored="false" />
+    <file path="/list_item_product.xml" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369550826511" ignored="false" />
+    <file path="/BuildConfig.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369544615783" ignored="false" />
+    <file path="/KoalaDataBase.java" changelist="6ec2dfca-374d-4a64-93e9-157e26ba9c1b" time="1369547790781" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +78,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -85,8 +94,8 @@
         <option name="CONDITION_ENABLED" value="true" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
+        <option name="CONDITION" value="&#13;&#13;JAVA" />
+        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -102,11 +111,10 @@
         <option name="CONDITION_ENABLED" value="true" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
+        <option name="CONDITION" value="&#13;&#13;JAVA" />
+        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -133,22 +141,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/diso/koala/SaleGUI.java" />
-        <option value="$PROJECT_DIR$/res/layout/list_item_product.xml" />
-        <option value="$PROJECT_DIR$/res/layout/product.xml" />
+        <option value="$PROJECT_DIR$/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/res/layout/sale.xml" />
+        <option value="$PROJECT_DIR$/src/com/diso/koala/ProductAdapterHolder.java" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/gen/com/diso/koala/BuildConfig.java" />
         <option value="$PROJECT_DIR$/res/layout/customer_list.xml" />
-        <option value="$PROJECT_DIR$/res/layout/main.xml" />
-        <option value="$PROJECT_DIR$/src/com/diso/koala/Home.java" />
-        <option value="$PROJECT_DIR$/res/layout/product_list.xml" />
+        <option value="$PROJECT_DIR$/src/com/diso/koala/db/KoalaDataBase.java" />
+        <option value="$PROJECT_DIR$/src/com/diso/koala/CustomerGUI.java" />
+        <option value="$PROJECT_DIR$/src/com/diso/koala/db/CustomerHelper.java" />
+        <option value="$PROJECT_DIR$/src/com/diso/koala/db/ProductHelper.java" />
+        <option value="$PROJECT_DIR$/src/com/diso/koala/CustomerListGUI.java" />
         <option value="$PROJECT_DIR$/src/com/diso/koala/ProductGUI.java" />
         <option value="$PROJECT_DIR$/src/com/diso/koala/ProductListGUI.java" />
-        <option value="$PROJECT_DIR$/res/layout/sale.xml" />
-        <option value="$PROJECT_DIR$/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/res/layout/customer.xml" />
-        <option value="$PROJECT_DIR$/src/com/diso/koala/CustomerGUI.java" />
-        <option value="$PROJECT_DIR$/src/com/diso/koala/db/Customer.java" />
-        <option value="$PROJECT_DIR$/src/com/diso/koala/db/CustomerHelper.java" />
-        <option value="$PROJECT_DIR$/src/com/diso/koala/CustomerListGUI.java" />
+        <option value="$PROJECT_DIR$/src/com/diso/koala/ProductAdapter.java" />
+        <option value="$PROJECT_DIR$/res/layout/list_item_product.xml" />
+        <option value="$PROJECT_DIR$/res/layout/product_list.xml" />
       </list>
     </option>
   </component>
@@ -233,6 +241,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="koala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Koala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Koala" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -292,11 +322,11 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
+    <property name="FullScreen" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager" selected="Android Application.Koala">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -331,19 +361,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -369,6 +386,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -427,7 +457,7 @@
       <option name="MODE" value="specific_activity" />
       <option name="DEPLOY" value="true" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="PREFERRED_AVD" value="GalaxyNexus4.2" />
+      <option name="PREFERRED_AVD" value="NexusS4.2" />
       <option name="USE_COMMAND_LINE" value="true" />
       <option name="COMMAND_LINE" value="" />
       <option name="WIPE_USER_DATA" value="false" />
@@ -504,7 +534,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24924242" sideWeight="0.600639" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44888178" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44888178" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258786" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -513,7 +543,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24924242" sideWeight="0.6709265" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287879" sideWeight="0.600639" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24848485" sideWeight="0.5511182" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24810319" sideWeight="0.6741214" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258786" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.6709265" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -581,150 +611,204 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Android/android-sdk/sources/android-17/android/app/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1838" column="0" selection-start="81764" selection-end="81764" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/android-sdk/sources/android-17/android/view/Window.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="899" column="0" selection-start="34182" selection-end="34182" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/android-sdk/sources/android-17/android/database/sqlite/SQLiteOpenHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="162" column="0" selection-start="7391" selection-end="7391" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/diso/koala/SaleGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="94" selection-end="94" vertical-scroll-proportion="0.11333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/sale.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="44" selection-start="2283" selection-end="2311" vertical-scroll-proportion="0.75775194">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/product.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="42" selection-start="1914" selection-end="1914" vertical-scroll-proportion="0.21794872">
+          <folding />
+        </state>
+      </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Android/android-sdk/sources/android-17/android/content/Context.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="16" column="8" selection-start="629" selection-end="644" vertical-scroll-proportion="0.05666667">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+    <entry file="file://$PROJECT_DIR$/src/com/diso/koala/ProductGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="40" selection-start="1435" selection-end="1457" vertical-scroll-proportion="-16.88">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Android/android-sdk/sources/android-17/android/view/View.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5728" column="35" selection-start="221042" selection-end="221042" vertical-scroll-proportion="0.7866667">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/diso/koala/Home.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="446" selection-end="446" vertical-scroll-proportion="0.32">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/AppData/Local/Android/android-sdk/platforms/android-17/android.jar!/android/R.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="552" column="32" selection-start="39784" selection-end="39784" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/customer.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="41" selection-start="1508" selection-end="1508" vertical-scroll-proportion="-6.92">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/diso/koala/db/Customer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="5" selection-start="200" selection-end="200" vertical-scroll-proportion="0.31166667">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/customer_list.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="48" selection-start="781" selection-end="792" vertical-scroll-proportion="-3.18">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/diso/koala/db/CustomerHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="45" selection-start="1580" selection-end="1580" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="11" column="12" selection-start="294" selection-end="294" vertical-scroll-proportion="-0.07323232">
+          <folding>
+            <element signature="method#onCreate#0;class#ProductGUI#0" expanded="false" />
+            <element signature="method#Events#0;class#ProductGUI#0" expanded="false" />
+            <element signature="method#AddProduct#0;class#ProductGUI#0" expanded="false" />
+            <element signature="method#ChangeVisibilityErrorMessage#0;class#ProductGUI#0" expanded="false" />
+            <element signature="method#ResetControls#0;class#ProductGUI#0" expanded="false" />
+            <element signature="method#GetEditText#0;class#ProductGUI#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/diso/koala/CustomerGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="22" selection-start="782" selection-end="782" vertical-scroll-proportion="0.0">
+        <state line="19" column="40" selection-start="507" selection-end="507" vertical-scroll-proportion="0.6439394">
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#onCreate#0;class#CustomerGUI#0" expanded="false" />
             <element signature="method#Events#0;class#CustomerGUI#0" expanded="false" />
-            <element signature="e#622#765#0" expanded="true" />
-            <element signature="e#746#747#0" expanded="true" />
             <element signature="method#AddCustomer#0;class#CustomerGUI#0" expanded="false" />
             <element signature="method#ChangeVisibilityErrorMessage#0;class#CustomerGUI#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/customer_list.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="46" selection-start="887" selection-end="887" vertical-scroll-proportion="0.30363637">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/diso/koala/CustomerListGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="32" selection-start="1400" selection-end="1400" vertical-scroll-proportion="0.68833333">
+        <state line="47" column="50" selection-start="1401" selection-end="1401" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="method#onCreate#0;class#CustomerListGUI#0" expanded="false" />
             <element signature="method#Events#0;class#CustomerListGUI#0" expanded="false" />
-            <element signature="e#685#829#0" expanded="true" />
-            <element signature="e#810#811#0" expanded="true" />
+            <element signature="method#LoadAllCustomers#0;class#CustomerListGUI#0" expanded="false" />
+            <element signature="method#SearchByName#0;class#CustomerListGUI#0" expanded="false" />
             <element signature="method#ShowCustomers#0;class#CustomerListGUI#0" expanded="false" />
             <element signature="e#1697#1705#0" expanded="true" />
             <element signature="method#ValidateCustomerHelper#0;class#CustomerListGUI#0" expanded="false" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/diso/koala/db/KoalaDataBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="29" selection-start="849" selection-end="849" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="n#!!doc;n#sqlCreateCustomer#0;n#KoalaDataBase#0" expanded="false" />
+            <element signature="method#KoalaDataBase#0;class#KoalaDataBase#0" expanded="false" />
+            <element signature="method#onCreate#0;class#KoalaDataBase#0" expanded="false" />
+            <element signature="method#onUpgrade#0;class#KoalaDataBase#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/diso/koala/ProductListGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="14" selection-start="1740" selection-end="1740" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="method#onCreate#0;class#ProductListGUI#0" expanded="false" />
+            <element signature="method#Events#0;class#ProductListGUI#0" expanded="false" />
+            <element signature="method#LoadAllProducts#0;class#ProductListGUI#0" expanded="false" />
+            <element signature="method#SearchByName#0;class#ProductListGUI#0" expanded="false" />
+            <element signature="method#ValidateProductHelper#0;class#ProductListGUI#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/diso/koala/db/Product.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="18" selection-start="635" selection-end="635" vertical-scroll-proportion="0.34833333">
+          <folding>
+            <element signature="method#Product#0;class#Product#0" expanded="false" />
+            <element signature="n#!!doc;n#setName#0;n#Product#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/diso/koala/db/CustomerHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="12" selection-start="240" selection-end="240" vertical-scroll-proportion="0.3560606">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#CustomerHelper#0;class#CustomerHelper#0" expanded="false" />
+            <element signature="method#Select#0;class#CustomerHelper#0" expanded="false" />
+            <element signature="method#SelectAll#0;class#CustomerHelper#0" expanded="false" />
+            <element signature="method#SelectByName#0;class#CustomerHelper#0" expanded="false" />
+            <element signature="method#ExecuteNonQuery#0;class#CustomerHelper#0" expanded="false" />
+            <element signature="method#Insert#0;class#CustomerHelper#0" expanded="false" />
+            <element signature="method#Update#0;class#CustomerHelper#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/diso/koala/db/ProductHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="35" selection-start="1121" selection-end="1121" vertical-scroll-proportion="0.8181818">
+          <folding>
+            <element signature="method#ProductHelper#0;class#ProductHelper#0" expanded="false" />
+            <element signature="method#SelectByName#0;class#ProductHelper#0" expanded="false" />
+            <element signature="method#ExecuteNonQuery#0;class#ProductHelper#0" expanded="false" />
+            <element signature="method#Insert#0;class#ProductHelper#0" expanded="false" />
+            <element signature="method#Update#0;class#ProductHelper#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/diso/koala/ProductAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="75" selection-start="1300" selection-end="1300" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/diso/koala/SaleGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="13" selection-start="94" selection-end="94" vertical-scroll-proportion="0.11744387">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/product_list.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="53" selection-start="433" selection-end="433" vertical-scroll-proportion="0.2630058">
+          <folding>
+            <element signature="tag#TableLayout#0;tag#LinearLayout#0" expanded="false" />
+            <element signature="tag#RelativeLayout#0;tag#LinearLayout#0" expanded="false" />
+            <element signature="tag#ListView#0;tag#LinearLayout#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/sale.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="16" selection-start="2228" selection-end="2266" vertical-scroll-proportion="0.66184974">
+          <folding>
+            <element signature="tag#TableLayout#0;tag#LinearLayout#0" expanded="false" />
+            <element signature="tag#TableRow#0;tag#TableLayout#0;tag#LinearLayout#0" expanded="false" />
+            <element signature="tag#TextView#1;tag#LinearLayout#0" expanded="false" />
+            <element signature="tag#TableLayout#1;tag#LinearLayout#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/list_item_product.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="17" selection-start="40" selection-end="853" vertical-scroll-proportion="0.098265894">
+          <folding>
+            <element signature="tag#RelativeLayout#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
   </component>

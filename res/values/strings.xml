@@ -16,15 +16,17 @@
     <string name="btn_customer_list">Lista de Clientes</string>
     <string name="btn_add_customer">Agregar Cliente</string>
     <!--Add/Edit Product-->
-    <string name="titulo_producto">Información Producto</string>
-    <string name="valor_producto">Valor</string>
-    <string name="descripcion_producto">Descripción</string>
+    <string name="title_product">Información Producto</string>
+    <string name="txt_product_price">Precio</string>
+    <string name="txt_product_description">Descripción</string>
+    <string name="txt_barcode">Código</string>
+    <string name="error_message_product">Debe escribir el nombre y el precio</string>
     <!--Sale-->
     <string name="title_sale">Venta</string>
     <string name="add_product">Agregar Producto</string>
     <string name="add_customer">Agregar Cliente</string>
     <string name="text_customer">Cliente: </string>
-    <string name="product_value">Valor</string>
+    <string name="product_price">Precio</string>
     <string name="total_sale">Total:</string>
     <!--Product List-->
     <string name="title_product_list">Lista de Productos</string>
