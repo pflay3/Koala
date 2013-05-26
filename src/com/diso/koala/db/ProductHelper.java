@@ -23,7 +23,7 @@ public class ProductHelper {
 
         if (c.moveToFirst()) {
             do {
-                products[pos] = new Product(c.getString(1));
+                products[pos] = new Product(c.getInt(0), c.getString(1));
                 products[pos].setPrice(c.getInt(2));
                 products[pos].setBarcode(c.getString(3));
                 products[pos].setDescription(c.getString(4));
@@ -37,6 +37,13 @@ public class ProductHelper {
     public Product[] SelectAll(){
         String sql = "SELECT id, name, price, barcode, description FROM Products";
         return Select(sql);
+    }
+
+    public Product SelectById(int id){
+        String sql = "SELECT id, name, price, barcode, description FROM Products WHERE id = %d";
+        Product[] products = Select(String.format(sql, id));
+        if(products.length > 0){ return products[0]; }
+        else{return null;}
     }
 
     public Product[] SelectByName(String name){

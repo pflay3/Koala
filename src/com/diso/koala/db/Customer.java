@@ -10,8 +10,8 @@ public class Customer {
         this.name = name;
     }
 
-    public void setId(String id1){
-        this.name = name;
+    public void setId(int id){
+        this.id = id;
     }
 
     public int getId(){

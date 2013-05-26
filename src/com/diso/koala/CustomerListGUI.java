@@ -10,12 +10,20 @@ import com.diso.koala.db.*;
 public class CustomerListGUI extends Activity {
     CustomerHelper customerHelper;
     Customer[] customers;
+    boolean booEdit = true;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer_list);
+        ValidateAction();
         Events();
         LoadAllCustomers();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SearchByName();
     }
 
     void Events(){
@@ -32,7 +40,8 @@ public class CustomerListGUI extends Activity {
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        EditCustomer(position);
+                        if (booEdit){ EditCustomer(position); }
+                        else{ GetCustomer(position); }
                     }
                 }
         );
@@ -80,5 +89,24 @@ public class CustomerListGUI extends Activity {
         intent.putExtras(bundle);
 
         startActivity(intent);
+    }
+
+    void GetCustomer(int position){
+        Intent intent = new Intent();
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("id", customers[position].getId());
+        bundle.putString("name", customers[position].getName());
+        intent.putExtras(bundle);
+        setResult(Activity.RESULT_OK,intent);
+        finish();
+    }
+
+    void ValidateAction(){
+        Bundle bundle = this.getIntent().getExtras();
+        if(bundle != null){
+            if(bundle.getString("action").equals("getId")){booEdit = false;}
+        }
+        else{booEdit = true;}
     }
 }

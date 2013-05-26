@@ -8,24 +8,28 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import com.diso.koala.db.Product;
 
-public class ProductAdapter extends ArrayAdapter {
+import java.util.ArrayList;
+
+public class ProductAdapter extends ArrayAdapter<Product> {
     Activity context;
-    Product[] products;
 
     ProductAdapter(Activity context, Product[] products) {
-        super(context, R.layout.list_item_product, products);
+        super(context, R.layout.product_list_item, products);
         this.context = context;
-        this.products = products;
+    }
+
+    ProductAdapter(Activity context, ArrayList<Product> products) {
+        super(context, R.layout.product_list_item, products);
+        this.context = context;
     }
 
     public View getView(int position, View contentView, ViewGroup parent){
-
         View item = contentView;
         ProductAdapterHolder productAdapterHolder;
 
         if (item == null){
             LayoutInflater layoutInflater = context.getLayoutInflater();
-            item = layoutInflater.inflate(R.layout.list_item_product, null);
+            item = layoutInflater.inflate(R.layout.product_list_item, null);
 
             productAdapterHolder = new ProductAdapterHolder();
             productAdapterHolder.lblProductName = (TextView)item.findViewById(R.id.lblProductName);
@@ -37,8 +41,8 @@ public class ProductAdapter extends ArrayAdapter {
             productAdapterHolder = (ProductAdapterHolder)item.getTag();
         }
 
-        productAdapterHolder.lblProductName.setText(products[position].getName());
-        productAdapterHolder.lblProductPrice.setText(Integer.toString(products[position].getPrice()));
+        productAdapterHolder.lblProductName.setText(((Product)getItem(position)).getName());
+        productAdapterHolder.lblProductPrice.setText(Integer.toString(((Product)getItem(position)).getPrice()));
         return(item);
     }
 

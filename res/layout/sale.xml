@@ -23,19 +23,22 @@
                     android:layout_width="0dp"
                     android:layout_weight=".50"
                     android:layout_height="wrap_content"
-                    android:text="@string/add_customer" />
+                    android:text="@string/add_customer"
+                    android:textSize="14sp"/>
 
             <Button
                     android:id="@+id/btnAddProduct"
                     android:layout_width="0dp"
                     android:layout_weight=".50"
                     android:layout_height="wrap_content"
-                    android:text="@string/add_product" />
+                    android:text="@string/add_product"
+                    android:textSize="14sp"/>
         </TableRow>
 
     </TableLayout>
 
     <TextView
+            android:id="@+id/lblCustomer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/text_customer"
@@ -54,6 +57,7 @@
                 android:textSize="20sp" />
 
         <TextView
+                android:id="@+id/lblTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="$0"
@@ -64,28 +68,28 @@
 
     </RelativeLayout>
 
-    <TableLayout
+    <RelativeLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:stretchColumns="0,1"
             android:layout_margin="8sp" >
 
-        <TableRow>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textSize="15sp" />
 
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/name"
-                    android:textSize="15sp" />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_price"
+                android:textSize="15sp"
+                android:layout_alignParentRight="true" />
 
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/product_price"
-                    android:textSize="15sp" />
+    </RelativeLayout>
 
-        </TableRow>
-
-    </TableLayout>
+    <ListView android:id="@+id/lstProductList"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content" />
 </LinearLayout>

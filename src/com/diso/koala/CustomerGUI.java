@@ -10,7 +10,6 @@ import com.diso.koala.db.*;
 
 public class CustomerGUI extends Activity {
     CustomerHelper customerHelper;
-    KoalaDataBase koalaDataBase;
     boolean booEdit = false;
     Customer customer;
 
