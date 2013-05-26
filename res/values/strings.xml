@@ -6,7 +6,6 @@
     <string name="btn_ok">Aceptar</string>
     <string name="btn_search">Buscar</string>
     <!--DataBase-->
-    <string name="db_name">Koala</string>
     <integer name="db_version">1</integer>
     <!--Home-->
     <string name="title_home">¿Que desea hacer?</string>
@@ -31,7 +30,7 @@
     <!--Product List-->
     <string name="title_product_list">Lista de Productos</string>
     <!--Customer-->
-    <string name="title_customer">Informaciónn Cliente</string>
+    <string name="title_customer">Información Cliente</string>
     <string name="error_message_customer">Debe escribir el nombre</string>
     <!--Customer List-->
     <string name="title_customer_list">Lista de Clientes</string>

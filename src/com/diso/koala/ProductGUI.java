@@ -41,7 +41,7 @@ public class ProductGUI extends Activity {
                 && !txtProductPrice.getText().toString().trim().equals("")){
             ChangeVisibilityErrorMessage(false);
             if(productHelper == null){
-                productHelper = new ProductHelper(this, getString(R.string.db_name));
+                productHelper = new ProductHelper(this);
             }
 
             productHelper.Insert(txtProductName.getText().toString()

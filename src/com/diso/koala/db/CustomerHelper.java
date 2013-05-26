@@ -10,8 +10,8 @@ public class CustomerHelper{
 
     KoalaDataBase kdb;
 
-    public CustomerHelper(Context context, String dbName) {
-        kdb = new KoalaDataBase(context, dbName, null, R.integer.db_version);
+    public CustomerHelper(Context context) {
+        kdb = new KoalaDataBase(context);
     }
 
     //region SQL-Methods
@@ -23,7 +23,7 @@ public class CustomerHelper{
 
         if (c.moveToFirst()) {
             do {
-                customers[pos] = new Customer(c.getString(1));
+                customers[pos] = new Customer(c.getInt(0), c.getString(1));
                 pos++;
             } while(c.moveToNext());
         }
@@ -32,12 +32,19 @@ public class CustomerHelper{
     }
 
     public Customer[] SelectAll(){
-        String sql = "SELECT id, name FROM Customer";
+        String sql = "SELECT id, name FROM Customers";
         return Select(sql);
     }
 
+    public Customer SelectById(int id){
+        String sql = "SELECT id, name FROM Customers WHERE id = %d";
+        Customer[] customers = Select(String.format(sql, id));
+        if(customers.length > 0){ return customers[0]; }
+        else{return null;}
+    }
+
     public Customer[] SelectByName(String name){
-        String sql = "SELECT id, name FROM Customer WHERE name like '%s'";
+        String sql = "SELECT id, name FROM Customers WHERE name like '%s'";
         return Select(String.format(sql, "%" + name + "%"));
     }
 
@@ -47,12 +54,12 @@ public class CustomerHelper{
     }
 
     public void Insert(String name){
-        String sql = "INSERT INTO Customer VALUES (NULL, '%s')";
+        String sql = "INSERT INTO Customers VALUES (NULL, '%s')";
         ExecuteNonQuery(String.format(sql,name));
     }
 
     public void Update(String name, int id){
-        String sql = "UPDATE Customer SET name = '%s' WHERE id = %d";
+        String sql = "UPDATE Customers SET name = '%s' WHERE id = %d";
         ExecuteNonQuery(String.format(sql, name, id));
     }
     //endregion

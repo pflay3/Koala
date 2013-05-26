@@ -3,19 +3,20 @@ package com.diso.koala.db;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import com.diso.koala.R;
 
 public class KoalaDataBase extends SQLiteOpenHelper {
 
     //region SQL
-    String sqlCreateCustomer = "CREATE TABLE Customer (id INTEGER PRIMARY KEY NOT NULL, name TEXT NOT NULL)";
-    String sqlDropCustomer = "DROP TABLE IF EXISTS Customer";
+    String sqlCreateCustomer = "CREATE TABLE Customers (id INTEGER PRIMARY KEY NOT NULL, name TEXT NOT NULL)";
+    String sqlDropCustomer = "DROP TABLE IF EXISTS Customers";
 
-    String sqlCreateProduct = "CREATE TABLE Product (id INTEGER PRIMARY KEY NOT NULL, name TEXT NOT NULL, price INTEGER NOT NULL, barcode TEXT, description TEXT)";
-    String sqlDropProduct = "DROP TABLE IF EXISTS Product";
+    String sqlCreateProduct = "CREATE TABLE Products (id INTEGER PRIMARY KEY NOT NULL, name TEXT NOT NULL, price INTEGER NOT NULL, barcode TEXT, description TEXT)";
+    String sqlDropProduct = "DROP TABLE IF EXISTS Products";
     //endregion
 
-    public KoalaDataBase(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public KoalaDataBase(Context context) {
+        super(context, "Koala", null, R.integer.db_version);
     }
 
     @Override

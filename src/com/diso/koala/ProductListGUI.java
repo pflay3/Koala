@@ -57,7 +57,7 @@ public class ProductListGUI extends Activity {
 
     void ValidateProductHelper(){
         if(productHelper == null){
-            productHelper = new ProductHelper(this, getString(R.string.db_name));
+            productHelper = new ProductHelper(this);
         }
     }
 }

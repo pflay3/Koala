@@ -1,16 +1,15 @@
 package com.diso.koala;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.*;
 import com.diso.koala.db.*;
 
 public class CustomerListGUI extends Activity {
     CustomerHelper customerHelper;
+    Customer[] customers;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,32 +20,41 @@ public class CustomerListGUI extends Activity {
 
     void Events(){
         final Button b = (Button)findViewById(R.id.btnSearchCustomer);
-
         b.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) { SearchByName(); }
                 }
         );
+
+        final ListView lstCustomers = (ListView)findViewById(R.id.lstCustomers);
+        lstCustomers.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        EditCustomer(position);
+                    }
+                }
+        );
     }
 
     void LoadAllCustomers(){
         ValidateCustomerHelper();
-        Customer[] customers = customerHelper.SelectAll();
-        ShowCustomers(customers);
+        customers = customerHelper.SelectAll();
+        ShowCustomers();
     }
 
     void SearchByName(){
         ValidateCustomerHelper();
         final EditText txtCustomer = (EditText)findViewById(R.id.txtCustomer);
         if (!txtCustomer.getText().toString().trim().equals("")){
-            Customer[] customers = customerHelper.SelectByName(txtCustomer.getText().toString());
-            ShowCustomers(customers);
+            customers = customerHelper.SelectByName(txtCustomer.getText().toString());
+            ShowCustomers();
         }
         else{LoadAllCustomers();}
     }
 
-    void ShowCustomers(Customer[] customers){
+    void ShowCustomers(){
         final String[] customersAdapter = new String[customers.length];
 
         for (int i = 0; i < customers.length; i++){
@@ -60,7 +68,17 @@ public class CustomerListGUI extends Activity {
 
     void ValidateCustomerHelper(){
         if(customerHelper == null){
-            customerHelper = new CustomerHelper(this, getString(R.string.db_name));
+            customerHelper = new CustomerHelper(this);
         }
+    }
+
+    void EditCustomer(int position){
+        Intent intent = new Intent(CustomerListGUI.this, CustomerGUI.class);
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("id", customers[position].getId());
+        intent.putExtras(bundle);
+
+        startActivity(intent);
     }
 }

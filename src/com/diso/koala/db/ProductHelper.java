@@ -10,8 +10,8 @@ public class ProductHelper {
 
     KoalaDataBase kdb;
 
-    public ProductHelper(Context context, String dbName) {
-        kdb = new KoalaDataBase(context, dbName, null, R.integer.db_version);
+    public ProductHelper(Context context) {
+        kdb = new KoalaDataBase(context);
     }
 
     //region SQL-Methods
@@ -35,12 +35,12 @@ public class ProductHelper {
     }
 
     public Product[] SelectAll(){
-        String sql = "SELECT id, name, price, barcode, description FROM Product";
+        String sql = "SELECT id, name, price, barcode, description FROM Products";
         return Select(sql);
     }
 
     public Product[] SelectByName(String name){
-        String sql = "SELECT id, name, price, barcode, description FROM Product WHERE name like '%s%s%s'";
+        String sql = "SELECT id, name, price, barcode, description FROM Products WHERE name like '%s%s%s'";
         return Select(String.format(sql, "%", name, "%"));
     }
 
@@ -50,12 +50,12 @@ public class ProductHelper {
     }
 
     public void Insert(String name, int price, String barcode, String description){
-        String sql = "INSERT INTO Product VALUES (NULL, '%s', %d, '%s', '%s')";
+        String sql = "INSERT INTO Products VALUES (NULL, '%s', %d, '%s', '%s')";
         ExecuteNonQuery(String.format(sql, name, price, barcode, description));
     }
 
     public void Update(String name, int price, String barcode, String description, int id){
-        String sql = "UPDATE Product SET name = '%s', price = %d, barcode = '%s', description = '%s' WHERE id = %d";
+        String sql = "UPDATE Products SET name = '%s', price = %d, barcode = '%s', description = '%s' WHERE id = %d";
         ExecuteNonQuery(String.format(sql, name, price, barcode, description, id));
     }
     //endregion

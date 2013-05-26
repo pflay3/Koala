@@ -11,10 +11,13 @@ import com.diso.koala.db.*;
 public class CustomerGUI extends Activity {
     CustomerHelper customerHelper;
     KoalaDataBase koalaDataBase;
+    boolean booEdit = false;
+    Customer customer;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer);
+        ValidateIfEdit();
         Events();
     }
 
@@ -24,22 +27,23 @@ public class CustomerGUI extends Activity {
         b.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) { AddCustomer(); }
+                    public void onClick(View v) { AddEditCustomer(); }
                 }
         );
     }
 
-    void AddCustomer(){
+    void AddEditCustomer(){
         final EditText txtCustomer = (EditText)findViewById(R.id.txtCustomer);
 
         if (!txtCustomer.getText().toString().trim().equals("")){
             ChangeVisibilityErrorMessage(false);
-            if(customerHelper == null){
-                customerHelper = new CustomerHelper(this, getString(R.string.db_name));
-            }
+            ValidateCustomerHelper();
 
-            customerHelper.Insert(txtCustomer.getText().toString());
-            txtCustomer.setText("");
+            if(booEdit){ customerHelper.Update(txtCustomer.getText().toString(), customer.getId()); }
+            else{
+                customerHelper.Insert(txtCustomer.getText().toString());
+                txtCustomer.setText("");
+            }
         }
         else{ChangeVisibilityErrorMessage(true);}
     }
@@ -48,5 +52,27 @@ public class CustomerGUI extends Activity {
         final TextView lblErrorMessage = (TextView)findViewById(R.id.lblCustomerError);
         if(val){lblErrorMessage.setVisibility(View.VISIBLE);}
         else{lblErrorMessage.setVisibility(View.INVISIBLE);}
+    }
+
+    void ValidateIfEdit(){
+        Bundle bundle = this.getIntent().getExtras();
+        if(bundle != null){
+            booEdit = true;
+            ValidateCustomerHelper();
+            customer = customerHelper.SelectById(bundle.getInt("id"));
+            SetInitialValues();
+        }
+        else{booEdit = false;}
+    }
+
+    void ValidateCustomerHelper(){
+        if(customerHelper == null){
+            customerHelper = new CustomerHelper(this);
+        }
+    }
+
+    void SetInitialValues(){
+        final EditText txtCustomer = (EditText)findViewById(R.id.txtCustomer);
+        txtCustomer.setText(customer.getName());
     }
 }
