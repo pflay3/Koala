@@ -21,7 +21,7 @@
             <Button
                     android:id="@+id/btnAddCustomer"
                     android:layout_width="0dp"
-                    android:layout_weight=".50"
+                    android:layout_weight=".33"
                     android:layout_height="wrap_content"
                     android:text="@string/add_customer"
                     android:textSize="14sp"/>
@@ -29,9 +29,17 @@
             <Button
                     android:id="@+id/btnAddProduct"
                     android:layout_width="0dp"
-                    android:layout_weight=".50"
+                    android:layout_weight=".33"
                     android:layout_height="wrap_content"
                     android:text="@string/add_product"
+                    android:textSize="14sp"/>
+
+            <Button
+                    android:id="@+id/btnSaveSale"
+                    android:layout_width="0dp"
+                    android:layout_weight=".33"
+                    android:layout_height="wrap_content"
+                    android:text="@string/save_sale"
                     android:textSize="14sp"/>
         </TableRow>
 

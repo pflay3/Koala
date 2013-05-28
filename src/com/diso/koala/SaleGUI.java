@@ -1,13 +1,12 @@
 package com.diso.koala;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
 import com.diso.koala.db.Product;
 
 import java.util.ArrayList;
@@ -19,6 +18,7 @@ public class SaleGUI extends Activity {
     int totalSale = 0;
     TextView lblCustomer, lblTotal;
     ProductAdapter adapter;
+    int position = 0;
     //endregion
 
     public void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,16 @@ public class SaleGUI extends Activity {
     void Events(){
         StartActivity((Button)findViewById(R.id.btnAddCustomer), CustomerListGUI.class);
         StartActivity((Button)findViewById(R.id.btnAddProduct), ProductListGUI.class);
+
+        final ListView lstProducts = (ListView)findViewById(R.id.lstProductList);
+        lstProducts.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        AskForDeleteProduct(position);
+                    }
+                }
+        );
     }
 
     void StartActivity(Button b, final Class<?> cls){
@@ -62,7 +72,7 @@ public class SaleGUI extends Activity {
     }
 
     void SetCustomer(Bundle bundle){
-        lblCustomer.setText(getString(R.string.text_customer) + bundle.getString("name"));
+        lblCustomer.setText(getString(R.string.text_customer) + " " + bundle.getString("name"));
     }
 
     void SetProduct(Bundle bundle){
@@ -81,6 +91,33 @@ public class SaleGUI extends Activity {
 
         adapter.add(product);
         adapter.notifyDataSetChanged();
+    }
+
+    void DeleteProduct(){
+        Product product = adapter.getItem(position);
+        totalSale -= product.getPrice();
+        lblTotal.setText(getString(R.string.currency_symbol) + Integer.toString(totalSale));
+
+        adapter.remove(product);
+        adapter.notifyDataSetChanged();
+    }
+
+    void AskForDeleteProduct(int position){
+        this.position = position;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.product_delete_title))
+                .setMessage(getString(R.string.product_delete_message))
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton(getString(R.string.product_delete_yes), new DialogInterface.OnClickListener()
+                {
+                    public void onClick(DialogInterface dialog, int which){DeleteProduct();}
+                });
+        builder.setNegativeButton(getString(R.string.product_delete_no), new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int which){dialog.dismiss();}
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     void GetFields(){
