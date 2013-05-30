@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
+import com.diso.koala.db.Customer;
 import com.diso.koala.db.Product;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class SaleGUI extends Activity {
     AddAction addAction;
     int totalSale = 0;
     TextView lblCustomer, lblTotal;
+    Customer customer;
     ProductAdapter adapter;
     int position = 0;
     //endregion
@@ -72,7 +74,8 @@ public class SaleGUI extends Activity {
     }
 
     void SetCustomer(Bundle bundle){
-        lblCustomer.setText(getString(R.string.text_customer) + " " + bundle.getString("name"));
+        customer = new Customer(bundle.getInt("id"), bundle.getString("name"));
+        lblCustomer.setText(getString(R.string.text_customer) + " " + customer.getName());
     }
 
     void SetProduct(Bundle bundle){

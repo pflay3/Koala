@@ -13,6 +13,15 @@ public class KoalaDataBase extends SQLiteOpenHelper {
 
     String sqlCreateProduct = "CREATE TABLE Products (id INTEGER PRIMARY KEY NOT NULL, name TEXT NOT NULL, price INTEGER NOT NULL, barcode TEXT, description TEXT)";
     String sqlDropProduct = "DROP TABLE IF EXISTS Products";
+
+    String sqlCreatePaymentType = "CREATE TABLE PaymentTypes (id INTEGER PRIMARY KEY NOT NULL, description TEXT NOT NULL)";
+    String sqlDropPaymentType = "DROP TABLE IF EXISTS PaymentTypes";
+
+    String sqlCreateSalesHeaders = "CREATE TABLE SalesHeaders (id INTEGER PRIMARY KEY NOT NULL, id_customers INTEGER NOT NULL, customer_name TEXT, total INTEGER NOT NULL, id_paymentTypes INTEGER NOT NULL)";
+    String sqlDropSalesHeaders = "DROP TABLE IF EXISTS SalesHeaders";
+
+    String sqlCreateSalesDetails = "CREATE TABLE SalesDetails (id INTEGER PRIMARY KEY NOT NULL, id_salesHeaders INTEGER NOT NULL, id_products INTEGER NOT NULL, product_name TEXT, product_price INTEGER)";
+    String c = "DROP TABLE IF EXISTS SalesDetails";
     //endregion
 
     public KoalaDataBase(Context context) {
@@ -22,18 +31,29 @@ public class KoalaDataBase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db){
         if(db.isReadOnly()){ db = this.getWritableDatabase(); }
-        db.execSQL(sqlCreateCustomer);
-        db.execSQL(sqlCreateProduct);
+        CreateTables(db);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int previousVersion, int newVersion) {
+        if(db.isReadOnly()){ db = this.getWritableDatabase(); }
+
         if (newVersion > previousVersion){
             db.execSQL(sqlDropCustomer);
             db.execSQL(sqlDropProduct);
+            db.execSQL(sqlDropPaymentType);
+            db.execSQL(sqlDropSalesHeaders);
+            db.execSQL(sqlDropSalesHeaders);
 
-            db.execSQL(sqlCreateCustomer);
-            db.execSQL(sqlCreateProduct);
+            CreateTables(db);
         }
+    }
+
+    void CreateTables(SQLiteDatabase db){
+        db.execSQL(sqlCreateCustomer);
+        db.execSQL(sqlCreateProduct);
+        db.execSQL(sqlCreatePaymentType);
+        db.execSQL(sqlCreateSalesHeaders);
+        db.execSQL(sqlCreateSalesDetails);
     }
 }
