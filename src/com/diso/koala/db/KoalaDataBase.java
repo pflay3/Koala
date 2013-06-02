@@ -18,7 +18,7 @@ public class KoalaDataBase extends SQLiteOpenHelper {
     String sqlCreatePaymentType = "CREATE TABLE PaymentTypes (id INTEGER PRIMARY KEY NOT NULL, description TEXT NOT NULL)";
     String sqlDropPaymentType = "DROP TABLE IF EXISTS PaymentTypes";
 
-    String sqlCreateSalesHeaders = "CREATE TABLE SalesHeaders (id INTEGER PRIMARY KEY NOT NULL, id_customers INTEGER NOT NULL, customer_name TEXT, total REAL NOT NULL, id_paymentTypes INTEGER NOT NULL)";
+    String sqlCreateSalesHeaders = "CREATE TABLE SalesHeaders (id INTEGER PRIMARY KEY NOT NULL, id_customers INTEGER NOT NULL, customer_name TEXT, total REAL NOT NULL, id_paymentTypes INTEGER NOT NULL, date_sale NUMERIC)";
     String sqlDropSalesHeaders = "DROP TABLE IF EXISTS SalesHeaders";
 
     String sqlCreateSalesDetails = "CREATE TABLE SalesDetails (id INTEGER PRIMARY KEY NOT NULL, id_salesHeaders INTEGER NOT NULL, id_products INTEGER NOT NULL, product_name TEXT, product_price REAL)";
@@ -33,6 +33,7 @@ public class KoalaDataBase extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db){
         if(db.isReadOnly()){ db = this.getWritableDatabase(); }
         CreateTables(db);
+        InsertDefaultPaymentTypes(db);
     }
 
     @Override
@@ -56,6 +57,11 @@ public class KoalaDataBase extends SQLiteOpenHelper {
         db.execSQL(sqlCreatePaymentType);
         db.execSQL(sqlCreateSalesHeaders);
         db.execSQL(sqlCreateSalesDetails);
+    }
+
+    void InsertDefaultPaymentTypes(SQLiteDatabase db){
+        db.execSQL( "INSERT INTO PaymentTypes VALUES( 1, 'Pagó' )" );
+        db.execSQL( "INSERT INTO PaymentTypes VALUES( 2, 'Debe' )" );
     }
 
     public int GetLastId(String table){

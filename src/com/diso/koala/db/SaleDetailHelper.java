@@ -54,13 +54,13 @@ public class SaleDetailHelper{
     }
 
     public int Insert(SaleDetail saleDetail){
-        String sql = "INSERT INTO SalesDetails VALUES (NULL, %d, %d, '%s', %d)";
+        String sql = "INSERT INTO SalesDetails VALUES (NULL, %d, %d, '%s', %f)";
         ExecuteNonQuery(String.format(sql, saleDetail.getId_salesHeaders(), saleDetail.getId_products(), saleDetail.getProduct_name(), saleDetail.getProduct_price()));
         return kdb.GetLastId("SalesDetails");
     }
 
     public void Update(SaleDetail saleDetail){
-        String sql = "UPDATE SalesDetails SET id_salesHeaders = %d, id_products = %d, product_name = '%s', product_price = %d WHERE id = %d";
+        String sql = "UPDATE SalesDetails SET id_salesHeaders = %d, id_products = %d, product_name = '%s', product_price = %f WHERE id = %d";
         ExecuteNonQuery(String.format(sql ,saleDetail.getId_salesHeaders(), saleDetail.getId_products(), saleDetail.getProduct_name(), saleDetail.getProduct_price(), saleDetail.getId()));
     }
     //endregion

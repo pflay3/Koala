@@ -7,27 +7,36 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
-import com.diso.koala.db.Customer;
-import com.diso.koala.db.Product;
+import com.diso.koala.db.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class SaleGUI extends Activity {
 
     //region Var
     AddAction addAction;
-    float totalSale = 0;
     TextView lblCustomer, lblTotal;
+    Spinner cmbPaymentType;
+    int positionProductForDelete = 0;
+    PaymentTypeHelper paymentTypeHelper;
+    SaleHeaderHelper saleHeaderHelper;
+
+    float totalSale = 0;
     Customer customer;
-    ProductAdapter adapter;
-    int position = 0;
+    ProductAdapter productAdapter;
+    PaymentType[] paymentTypes;
     //endregion
 
+    //region Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sale);
         GetFields();
         Events();
+        paymentTypeHelper = new PaymentTypeHelper(this);
+        LoadPaymentTypes();
+        saleHeaderHelper = new SaleHeaderHelper(this);
     }
 
     @Override
@@ -37,10 +46,19 @@ public class SaleGUI extends Activity {
             else if(addAction == AddAction.PRODUCT){SetProduct(data.getExtras());}
         }
     }
+    //endregion
 
     void Events(){
         StartActivity((Button)findViewById(R.id.btnAddCustomer), CustomerListGUI.class);
         StartActivity((Button)findViewById(R.id.btnAddProduct), ProductListGUI.class);
+
+        final Button btnSaveSale = (Button)findViewById(R.id.btnSaveSale);
+        btnSaveSale.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SaveSale();
+            }
+        });
 
         final ListView lstProducts = (ListView)findViewById(R.id.lstProductList);
         lstProducts.setOnItemClickListener(
@@ -85,28 +103,28 @@ public class SaleGUI extends Activity {
         Product product = new Product(bundle.getInt("id"),bundle.getString("name"));
         product.setPrice(bundle.getFloat("price"));
 
-        if(adapter==null){
+        if(productAdapter == null){
             ArrayList<Product> products = new ArrayList<Product>();
-            adapter = new ProductAdapter(this, products);
+            productAdapter = new ProductAdapter(this, products);
             ListView lstProducts = (ListView)findViewById(R.id.lstProductList);
-            lstProducts.setAdapter(adapter);
+            lstProducts.setAdapter(productAdapter);
         }
 
-        adapter.add(product);
-        adapter.notifyDataSetChanged();
+        productAdapter.add(product);
+        productAdapter.notifyDataSetChanged();
     }
 
     void DeleteProduct(){
-        Product product = adapter.getItem(position);
+        Product product = productAdapter.getItem(positionProductForDelete);
         totalSale -= product.getPrice();
         lblTotal.setText(getString(R.string.currency_symbol) + Functions.GetFloatValueWithTwoDecimals(totalSale));
 
-        adapter.remove(product);
-        adapter.notifyDataSetChanged();
+        productAdapter.remove(product);
+        productAdapter.notifyDataSetChanged();
     }
 
     void AskForDeleteProduct(int position){
-        this.position = position;
+        this.positionProductForDelete = position;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(getString(R.string.product_delete_title))
                 .setMessage(getString(R.string.product_delete_message))
@@ -127,7 +145,91 @@ public class SaleGUI extends Activity {
         if(lblCustomer == null){
             lblCustomer = (TextView)findViewById(R.id.lblCustomer);
             lblTotal = (TextView)findViewById(R.id.lblTotal);
+            cmbPaymentType = (Spinner)findViewById(R.id.cmbPaymentType);
         }
+    }
+
+    void LoadPaymentTypes(){
+        paymentTypes = paymentTypeHelper.SelectAll();
+        final String[] paymentAdapter = new String[paymentTypes.length];
+
+        for (int i = 0; i < paymentTypes.length; i++){
+            paymentAdapter[i] = paymentTypes[i].getDescription();
+        }
+
+        ArrayAdapter<String> data = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, paymentAdapter);
+        data.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+        cmbPaymentType.setAdapter( data );
+    }
+
+    int GetIdPaymentTypes(){
+        return paymentTypes[ cmbPaymentType.getSelectedItemPosition() ].getId();
+    }
+
+    void SaveSale(){
+
+        if ( !ValidateSaveSale() ){
+            ShowErrorSaveSale();
+            return;
+        }
+
+        // Header
+        SaleHeader saleHeader = new SaleHeader(0, customer.getId());
+        saleHeader.setCustomer_name(customer.getName());
+        saleHeader.setTotal(totalSale);
+        saleHeader.setId_paymentTypes(GetIdPaymentTypes());
+        saleHeader.setDate_sale( new Date());
+
+        //Details
+        for( int i = 0; i < productAdapter.getCount(); i++ ){
+            Product product = productAdapter.getItem(i);
+
+            SaleDetail saleDetail = new SaleDetail(0, 0);
+            saleDetail.setId_products( product.getId() );
+            saleDetail.setProduct_name( product.getName() );
+            saleDetail.setProduct_price( product.getPrice() );
+            saleHeader.addDetail( saleDetail );
+        }
+
+        saleHeaderHelper.InsertWithDetails( saleHeader );
+        ResetGUI();
+    }
+
+    boolean ValidateSaveSale(){
+        if ( customer == null ){ return false; }
+        if ( productAdapter.getCount() == 0 ){ return false; }
+
+        return  true;
+    }
+
+    void ShowErrorSaveSale(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.save_sale_title))
+                .setMessage(getString(R.string.save_sale_error_message))
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton(getString(R.string.save_sale_ok), new DialogInterface.OnClickListener()
+                {
+                    public void onClick(DialogInterface dialog, int which){dialog.dismiss();}
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    void ResetGUI(){
+        // Customer
+        customer = null;
+        lblCustomer.setText(getString(R.string.text_customer));
+
+        // Products
+        productAdapter.clear();
+        productAdapter.notifyDataSetChanged();
+
+        // Payment Type
+        cmbPaymentType.setSelection(0);
+
+        // Total
+        totalSale = 0;
+        lblTotal.setText(getString(R.string.currency_symbol) + Functions.GetFloatValueWithTwoDecimals(totalSale));
     }
 
     enum AddAction{

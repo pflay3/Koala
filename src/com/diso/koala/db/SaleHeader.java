@@ -2,6 +2,7 @@ package com.diso.koala.db;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 
 public class SaleHeader {
     private int id;
@@ -10,6 +11,7 @@ public class SaleHeader {
     private float total;
     private int id_paymentTypes;
     private ArrayList<SaleDetail> details;
+    private Date date_sale;
 
     public SaleHeader(int id, int id_customers){
         this.id = id;
@@ -54,6 +56,14 @@ public class SaleHeader {
 
     public void setId_paymentTypes(int id_paymentTypes) {
         this.id_paymentTypes = id_paymentTypes;
+    }
+
+    public Date getDate_sale() {
+        return date_sale;
+    }
+
+    public void setDate_sale(Date date_sale) {
+        this.date_sale = date_sale;
     }
 
     //region Details

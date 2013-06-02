@@ -9,7 +9,7 @@
     <!--DataBase-->
     <integer name="db_version">1</integer>
     <!--Home-->
-    <string name="title_home">¿Que desea hacer?</string>
+    <string name="title_home">¿Qué desea hacer?</string>
     <string name="btn_sale">Vender</string>
     <string name="btn_products">Ver Productos</string>
     <string name="btn_add_product">Agregar Producto</string>
@@ -34,6 +34,9 @@
     <string name="product_delete_message">¿Desea eliminar el producto?</string>
     <string name="product_delete_yes">Si</string>
     <string name="product_delete_no">No</string>
+    <string name="save_sale_title">Guardar Venta</string>
+    <string name="save_sale_error_message">Debe seleccionar el cliente y al menos un producto</string>
+    <string name="save_sale_ok">Aceptar</string>
     <!--Product List-->
     <string name="title_product_list">Lista de Productos</string>
     <!--Customer-->
