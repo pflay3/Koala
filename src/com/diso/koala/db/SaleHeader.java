@@ -7,7 +7,7 @@ public class SaleHeader {
     private int id;
     private int id_customers;
     private String customer_name;
-    private int total;
+    private float total;
     private int id_paymentTypes;
     private ArrayList<SaleDetail> details;
 
@@ -40,11 +40,11 @@ public class SaleHeader {
         this.customer_name = customer_name;
     }
 
-    public int getTotal() {
+    public float getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(float total) {
         this.total = total;
     }
 

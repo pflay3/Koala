@@ -4,6 +4,7 @@ public class Customer {
 
     private int id;
     private String name;
+    private String identification;
 
     public Customer(int id, String name){
         this.id = id;
@@ -24,5 +25,13 @@ public class Customer {
 
     public String getName(){
         return name;
+    }
+
+    public String getIdentification() {
+        return identification;
+    }
+
+    public void setIdentification(String identification) {
+        this.identification = identification;
     }
 }

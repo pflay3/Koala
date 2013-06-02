@@ -24,7 +24,7 @@ public class ProductHelper {
         if (c.moveToFirst()) {
             do {
                 products[pos] = new Product(c.getInt(0), c.getString(1));
-                products[pos].setPrice(c.getInt(2));
+                products[pos].setPrice(c.getFloat(2));
                 products[pos].setBarcode(c.getString(3));
                 products[pos].setDescription(c.getString(4));
                 pos++;
@@ -56,14 +56,15 @@ public class ProductHelper {
         db.execSQL(sqlNonQuery);
     }
 
-    public void Insert(String name, int price, String barcode, String description){
-        String sql = "INSERT INTO Products VALUES (NULL, '%s', %d, '%s', '%s')";
-        ExecuteNonQuery(String.format(sql, name, price, barcode, description));
+    public int Insert(Product product){
+        String sql = "INSERT INTO Products VALUES (NULL, '%s', %f, '%s', '%s')";
+        ExecuteNonQuery(String.format(sql, product.getName(), product.getPrice(), product.getBarcode(), product.getDescription()));
+        return kdb.GetLastId("Products");
     }
 
-    public void Update(String name, int price, String barcode, String description, int id){
-        String sql = "UPDATE Products SET name = '%s', price = %d, barcode = '%s', description = '%s' WHERE id = %d";
-        ExecuteNonQuery(String.format(sql, name, price, barcode, description, id));
+    public void Update(Product product){
+        String sql = "UPDATE Products SET name = '%s', price = %f, barcode = '%s', description = '%s' WHERE id = %d";
+        ExecuteNonQuery(String.format(sql, product.getName(), product.getPrice(), product.getBarcode(), product.getDescription(), product.getId()));
     }
     //endregion
 }

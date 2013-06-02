@@ -24,6 +24,7 @@ public class CustomerHelper{
         if (c.moveToFirst()) {
             do {
                 customers[pos] = new Customer(c.getInt(0), c.getString(1));
+                customers[pos].setIdentification(c.getString(2));
                 pos++;
             } while(c.moveToNext());
         }
@@ -32,19 +33,19 @@ public class CustomerHelper{
     }
 
     public Customer[] SelectAll(){
-        String sql = "SELECT id, name FROM Customers";
+        String sql = "SELECT id, name, identification FROM Customers";
         return Select(sql);
     }
 
     public Customer SelectById(int id){
-        String sql = "SELECT id, name FROM Customers WHERE id = %d";
+        String sql = "SELECT id, name, identification FROM Customers WHERE id = %d";
         Customer[] customers = Select(String.format(sql, id));
         if(customers.length > 0){ return customers[0]; }
         else{return null;}
     }
 
     public Customer[] SelectByName(String name){
-        String sql = "SELECT id, name FROM Customers WHERE name like '%s'";
+        String sql = "SELECT id, name, identification FROM Customers WHERE name like '%s'";
         return Select(String.format(sql, "%" + name + "%"));
     }
 
@@ -53,14 +54,15 @@ public class CustomerHelper{
         db.execSQL(sqlNonQuery);
     }
 
-    public void Insert(String name){
-        String sql = "INSERT INTO Customers VALUES (NULL, '%s')";
-        ExecuteNonQuery(String.format(sql,name));
+    public int Insert(Customer customer){
+        String sql = "INSERT INTO Customers VALUES (NULL, '%s', '%s')";
+        ExecuteNonQuery(String.format(sql, customer.getName(), customer.getIdentification()));
+        return kdb.GetLastId("Customers");
     }
 
-    public void Update(String name, int id){
-        String sql = "UPDATE Customers SET name = '%s' WHERE id = %d";
-        ExecuteNonQuery(String.format(sql, name, id));
+    public void Update(Customer customer){
+        String sql = "UPDATE Customers SET name = '%s', identification = '%s' WHERE id = %d";
+        ExecuteNonQuery(String.format(sql, customer.getName(), customer.getIdentification(), customer.getId()));
     }
     //endregion
 }

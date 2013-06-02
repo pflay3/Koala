@@ -1,6 +1,7 @@
 package com.diso.koala;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,14 +10,20 @@ import android.widget.TextView;
 import com.diso.koala.db.*;
 
 public class CustomerGUI extends Activity {
+
+    //region Var
     CustomerHelper customerHelper;
     boolean booEdit = false;
+    boolean booReturn = false;
     Customer customer;
+    EditText txtCustomer;
+    EditText txtCustomerId;
+    //@endregion
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer);
-        ValidateIfEdit();
+        ValidateAction();
         Events();
     }
 
@@ -32,16 +39,31 @@ public class CustomerGUI extends Activity {
     }
 
     void AddEditCustomer(){
-        final EditText txtCustomer = (EditText)findViewById(R.id.txtCustomer);
+        GetEditText();
 
         if (!txtCustomer.getText().toString().trim().equals("")){
             ChangeVisibilityErrorMessage(false);
             ValidateCustomerHelper();
 
-            if(booEdit){ customerHelper.Update(txtCustomer.getText().toString(), customer.getId()); }
+            if ( customer == null ){ customer = new Customer(0, ""); }
+            customer.setName(txtCustomer.getText().toString());
+            customer.setIdentification(txtCustomerId.getText().toString());
+
+            if(booEdit){ customerHelper.Update(customer); }
             else{
-                customerHelper.Insert(txtCustomer.getText().toString());
+                customer.setId( customerHelper.Insert(customer) );
                 txtCustomer.setText("");
+                txtCustomerId.setText("");
+
+                if(booReturn){
+                    Intent intent = new Intent();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("id", customer.getId());
+                    bundle.putString("name", customer.getName());
+                    intent.putExtras(bundle);
+                    setResult(Activity.RESULT_OK,intent);
+                    finish();
+                }
             }
         }
         else{ChangeVisibilityErrorMessage(true);}
@@ -53,17 +75,6 @@ public class CustomerGUI extends Activity {
         else{lblErrorMessage.setVisibility(View.INVISIBLE);}
     }
 
-    void ValidateIfEdit(){
-        Bundle bundle = this.getIntent().getExtras();
-        if(bundle != null){
-            booEdit = true;
-            ValidateCustomerHelper();
-            customer = customerHelper.SelectById(bundle.getInt("id"));
-            SetInitialValues();
-        }
-        else{booEdit = false;}
-    }
-
     void ValidateCustomerHelper(){
         if(customerHelper == null){
             customerHelper = new CustomerHelper(this);
@@ -71,7 +82,38 @@ public class CustomerGUI extends Activity {
     }
 
     void SetInitialValues(){
-        final EditText txtCustomer = (EditText)findViewById(R.id.txtCustomer);
+        GetEditText();
         txtCustomer.setText(customer.getName());
+        txtCustomerId.setText(customer.getIdentification());
+    }
+
+    void GetEditText(){
+        if(txtCustomer == null){
+            txtCustomer = (EditText)findViewById(R.id.txtCustomer);
+            txtCustomerId = (EditText)findViewById(R.id.txtCustomerId);
+        }
+    }
+
+    void ValidateAction(){
+        Bundle bundle = this.getIntent().getExtras();
+        if(bundle != null){
+            if(bundle.getString("action").equals("edit")){
+                booEdit = true;
+                booReturn = false;
+
+                ValidateCustomerHelper();
+                customer = customerHelper.SelectById(bundle.getInt("id"));
+                SetInitialValues();
+            }
+            else if(bundle.getString("action").equals("getId"))
+            {
+                booEdit = false;
+                booReturn = true;
+            }
+        }
+        else{
+            booEdit = false;
+            booReturn = false;
+        }
     }
 }

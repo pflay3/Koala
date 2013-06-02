@@ -20,24 +20,12 @@
             android:id="@+id/btnProductList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_product_list" />
-
-    <Button
-            android:id="@+id/btnAddProduct"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_add_product" />
+            android:text="@string/btn_products" />
 
     <Button
             android:id="@+id/btnCustomerList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_customer_list" />
-
-    <Button
-            android:id="@+id/btnAddCustomer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_add_customer" />
+            android:text="@string/btn_customers" />
 </LinearLayout>
 

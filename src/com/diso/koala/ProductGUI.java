@@ -1,6 +1,7 @@
 package com.diso.koala;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ public class ProductGUI extends Activity {
     EditText txtProductBarCode = null;
     EditText txtProductDescription = null;
     boolean booEdit = false;
+    boolean booReturn = false;
     Product product;
     //endregion
 
@@ -24,7 +26,7 @@ public class ProductGUI extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product);
-        ValidateIfEdit();
+        ValidateAction();
         Events();
     }
 
@@ -47,19 +49,27 @@ public class ProductGUI extends Activity {
             ChangeVisibilityErrorMessage(false);
             ValidateProductHelper();
 
-            if(booEdit){
-                productHelper.Update(txtProductName.getText().toString()
-                                        , Integer.parseInt(txtProductPrice.getText().toString())
-                                        , txtProductBarCode.getText().toString()
-                                        , txtProductDescription.getText().toString()
-                                        , product.getId());
-            }
+            if ( product == null ){ product = new Product(0, ""); }
+            product.setName(txtProductName.getText().toString());
+            product.setPrice(Float.parseFloat(txtProductPrice.getText().toString()));
+            product.setBarcode(txtProductBarCode.getText().toString());
+            product.setDescription(txtProductDescription.getText().toString());
+
+            if(booEdit){ productHelper.Update(product); }
             else{
-                productHelper.Insert(txtProductName.getText().toString()
-                                        , Integer.parseInt(txtProductPrice.getText().toString())
-                                        , txtProductBarCode.getText().toString()
-                                        , txtProductDescription.getText().toString());
+                product.setId( productHelper.Insert(product) );
                 ResetControls();
+
+                if(booReturn){
+                    Intent intent = new Intent();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("id", product.getId());
+                    bundle.putString("name", product.getName());
+                    bundle.putFloat("price", product.getPrice());
+                    intent.putExtras(bundle);
+                    setResult(Activity.RESULT_OK,intent);
+                    finish();
+                }
             }
         }
         else{ChangeVisibilityErrorMessage(true);}
@@ -88,17 +98,6 @@ public class ProductGUI extends Activity {
         }
     }
 
-    void ValidateIfEdit(){
-        Bundle bundle = this.getIntent().getExtras();
-        if(bundle != null){
-            booEdit = true;
-            ValidateProductHelper();
-            product = productHelper.SelectById(bundle.getInt("id"));
-            SetInitialValues();
-        }
-        else{booEdit = false;}
-    }
-
     void ValidateProductHelper(){
         if(productHelper == null){
             productHelper = new ProductHelper(this);
@@ -108,8 +107,31 @@ public class ProductGUI extends Activity {
     void SetInitialValues(){
         GetEditText();
         txtProductName.setText(product.getName());
-        txtProductPrice.setText(Integer.toString(product.getPrice()));
+        txtProductPrice.setText(Functions.GetFloatValue(product.getPrice()));
         txtProductBarCode.setText(product.getBarcode());
         txtProductDescription.setText(product.getDescription());
+    }
+
+    void ValidateAction(){
+        Bundle bundle = this.getIntent().getExtras();
+        if(bundle != null){
+            if(bundle.getString("action").equals("edit")){
+                booEdit = true;
+                booReturn = false;
+
+                ValidateProductHelper();
+                product = productHelper.SelectById(bundle.getInt("id"));
+                SetInitialValues();
+            }
+            else if(bundle.getString("action").equals("getId"))
+            {
+                booEdit = false;
+                booReturn = true;
+            }
+        }
+        else{
+            booEdit = false;
+            booReturn = false;
+        }
     }
 }

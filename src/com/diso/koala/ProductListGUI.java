@@ -24,6 +24,16 @@ public class ProductListGUI extends Activity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(data != null && resultCode == Activity.RESULT_OK){
+            Bundle bundle = data.getExtras();
+            Product product = new Product(bundle.getInt("id"),bundle.getString("name"));
+            product.setPrice(bundle.getFloat("price"));
+            if(!booEdit){GetProduct(product);}
+        }
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         SearchByName();
@@ -39,13 +49,28 @@ public class ProductListGUI extends Activity {
                 }
         );
 
+        final Button bAdd = (Button)findViewById(R.id.btnAddProduct);
+        bAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductListGUI.this, ProductGUI.class);
+                if(booEdit){ startActivity(intent); }
+                else{
+                    Bundle bundle = new Bundle();
+                    bundle.putString("action", "getId");
+                    intent.putExtras(bundle);
+                    startActivityForResult(intent, 0);
+                }
+            }
+        });
+
         final ListView lstProducts = (ListView)findViewById(R.id.lstProductList);
         lstProducts.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         if (booEdit){ EditProduct(position); }
-                        else{ GetProduct(position); }
+                        else{ GetProduct(products[position]); }
                     }
                 }
         );
@@ -84,18 +109,19 @@ public class ProductListGUI extends Activity {
 
         Bundle bundle = new Bundle();
         bundle.putInt("id", products[position].getId());
+        bundle.putString("action", "edit");
         intent.putExtras(bundle);
 
         startActivity(intent);
     }
 
-    void GetProduct(int position){
+    void GetProduct(Product product){
         Intent intent = new Intent();
 
         Bundle bundle = new Bundle();
-        bundle.putInt("id", products[position].getId());
-        bundle.putString("name", products[position].getName());
-        bundle.putInt("price", products[position].getPrice());
+        bundle.putInt("id", product.getId());
+        bundle.putString("name", product.getName());
+        bundle.putFloat("price", product.getPrice());
         intent.putExtras(bundle);
         setResult(Activity.RESULT_OK,intent);
         finish();

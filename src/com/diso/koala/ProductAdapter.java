@@ -42,7 +42,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         }
 
         productAdapterHolder.lblProductName.setText(((Product)getItem(position)).getName());
-        productAdapterHolder.lblProductPrice.setText(Integer.toString(((Product)getItem(position)).getPrice()));
+        productAdapterHolder.lblProductPrice.setText(Functions.GetFloatValueWithTwoDecimals(((Product)getItem(position)).getPrice()));
         return(item);
     }
 

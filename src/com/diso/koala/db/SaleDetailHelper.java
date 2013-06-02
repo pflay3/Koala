@@ -53,14 +53,15 @@ public class SaleDetailHelper{
         db.execSQL(sqlNonQuery);
     }
 
-    public void Insert(int id_salesHeaders, int id_products, String product_name, int product_price){
+    public int Insert(SaleDetail saleDetail){
         String sql = "INSERT INTO SalesDetails VALUES (NULL, %d, %d, '%s', %d)";
-        ExecuteNonQuery(String.format(sql, id_salesHeaders, id_products, product_name, product_price));
+        ExecuteNonQuery(String.format(sql, saleDetail.getId_salesHeaders(), saleDetail.getId_products(), saleDetail.getProduct_name(), saleDetail.getProduct_price()));
+        return kdb.GetLastId("SalesDetails");
     }
 
-    public void Update(int id_salesHeaders, int id_products, String product_name, int product_price, int id){
+    public void Update(SaleDetail saleDetail){
         String sql = "UPDATE SalesDetails SET id_salesHeaders = %d, id_products = %d, product_name = '%s', product_price = %d WHERE id = %d";
-        ExecuteNonQuery(String.format(sql ,id_salesHeaders, id_products, product_name, product_price, id));
+        ExecuteNonQuery(String.format(sql ,saleDetail.getId_salesHeaders(), saleDetail.getId_products(), saleDetail.getProduct_name(), saleDetail.getProduct_price(), saleDetail.getId()));
     }
     //endregion
 }

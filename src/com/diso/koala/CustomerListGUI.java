@@ -21,6 +21,15 @@ public class CustomerListGUI extends Activity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(data != null && resultCode == Activity.RESULT_OK){
+            Bundle bundle = data.getExtras();
+            Customer customer = new Customer(bundle.getInt("id"), bundle.getString("name"));
+            if(!booEdit){GetCustomer(customer);}
+        }
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         SearchByName();
@@ -35,13 +44,28 @@ public class CustomerListGUI extends Activity {
                 }
         );
 
+        final Button bAdd = (Button)findViewById(R.id.btnAddCustomer);
+        bAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CustomerListGUI.this, CustomerGUI.class);
+                if(booEdit){ startActivity(intent); }
+                else{
+                    Bundle bundle = new Bundle();
+                    bundle.putString("action", "getId");
+                    intent.putExtras(bundle);
+                    startActivityForResult(intent, 0);
+                }
+            }
+        });
+
         final ListView lstCustomers = (ListView)findViewById(R.id.lstCustomers);
         lstCustomers.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         if (booEdit){ EditCustomer(position); }
-                        else{ GetCustomer(position); }
+                        else{ GetCustomer(customers[position]); }
                     }
                 }
         );
@@ -86,17 +110,18 @@ public class CustomerListGUI extends Activity {
 
         Bundle bundle = new Bundle();
         bundle.putInt("id", customers[position].getId());
+        bundle.putString("action", "edit");
         intent.putExtras(bundle);
 
         startActivity(intent);
     }
 
-    void GetCustomer(int position){
+    void GetCustomer(Customer customer){
         Intent intent = new Intent();
 
         Bundle bundle = new Bundle();
-        bundle.putInt("id", customers[position].getId());
-        bundle.putString("name", customers[position].getName());
+        bundle.putInt("id", customer.getId());
+        bundle.putString("name", customer.getName());
         intent.putExtras(bundle);
         setResult(Activity.RESULT_OK,intent);
         finish();

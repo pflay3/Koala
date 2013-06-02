@@ -60,14 +60,15 @@ public class SaleHeaderHelper {
         db.execSQL(sqlNonQuery);
     }
 
-    public void Insert(int id_customers, String customer_name, int total, int id_paymentTypes){
+    public int Insert(SaleHeader saleHeader){
         String sql = "INSERT INTO SalesHeaders VALUES (NULL, %d, '%s', %d, %d)";
-        ExecuteNonQuery(String.format(sql, id_customers, customer_name, total, id_paymentTypes));
+        ExecuteNonQuery(String.format(sql, saleHeader.getId_customers(), saleHeader.getCustomer_name(), saleHeader.getTotal(), saleHeader.getId_paymentTypes()));
+        return kdb.GetLastId("SalesHeaders");
     }
 
-    public void Update(int id_customers, String customer_name, int total, int id_paymentTypes, int id){
+    public void Update(SaleHeader saleHeader){
         String sql = "UPDATE SalesHeaders SET id_customers = %d, customer_name = '%s', total = %d, id_paymentTypes = %d WHERE id = %d";
-        ExecuteNonQuery(String.format(sql ,id_customers, customer_name, total, id_paymentTypes, id));
+        ExecuteNonQuery(String.format(sql ,saleHeader.getId_customers(), saleHeader.getCustomer_name(), saleHeader.getTotal(), saleHeader.getId_paymentTypes(), saleHeader.getId()));
     }
     //endregion
 }

@@ -18,9 +18,7 @@ public class Home extends Activity {
     void Events(){
         StartActivity((Button)findViewById(R.id.btnSale), SaleGUI.class);
         StartActivity((Button)findViewById(R.id.btnProductList), ProductListGUI.class);
-        StartActivity((Button)findViewById(R.id.btnAddProduct), ProductGUI.class);
         StartActivity((Button)findViewById(R.id.btnCustomerList), CustomerListGUI.class);
-        StartActivity((Button)findViewById(R.id.btnAddCustomer), CustomerGUI.class);
     }
 
     void StartActivity(Button b, final Class<?> cls){

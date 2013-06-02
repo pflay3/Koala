@@ -5,7 +5,7 @@ public class SaleDetail {
     private int id_salesHeaders;
     private int id_products;
     private String product_name;
-    private int product_price;
+    private float product_price;
 
     public SaleDetail(int id, int id_salesHeaders){
         this.id = id;
@@ -44,11 +44,11 @@ public class SaleDetail {
         this.product_name = product_name;
     }
 
-    public int getProduct_price() {
+    public float getProduct_price() {
         return product_price;
     }
 
-    public void setProduct_price(int price) {
+    public void setProduct_price(float price) {
         this.product_price = price;
     }
 }

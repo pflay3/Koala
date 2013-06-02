@@ -5,14 +5,15 @@
     <string name="name">Nombre</string>
     <string name="btn_ok">Aceptar</string>
     <string name="btn_search">Buscar</string>
+    <string name="btn_add">+</string>
     <!--DataBase-->
     <integer name="db_version">1</integer>
     <!--Home-->
     <string name="title_home">¿Que desea hacer?</string>
     <string name="btn_sale">Vender</string>
-    <string name="btn_product_list">Lista de Productos</string>
+    <string name="btn_products">Ver Productos</string>
     <string name="btn_add_product">Agregar Producto</string>
-    <string name="btn_customer_list">Lista de Clientes</string>
+    <string name="btn_customers">Ver Clientes</string>
     <string name="btn_add_customer">Agregar Cliente</string>
     <!--Add/Edit Product-->
     <string name="title_product">Información Producto</string>
@@ -38,6 +39,7 @@
     <!--Customer-->
     <string name="title_customer">Información Cliente</string>
     <string name="error_message_customer">Debe escribir el nombre</string>
+    <string name="customer_identification">Cédula</string>
     <!--Customer List-->
     <string name="title_customer_list">Lista de Clientes</string>
 </resources>

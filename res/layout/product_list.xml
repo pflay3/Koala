@@ -21,7 +21,7 @@
             <EditText
             android:id="@+id/txtProduct"
             android:layout_width="0dp"
-            android:layout_weight=".70"
+            android:layout_weight=".55"
             android:layout_height="wrap_content"
             android:inputType="text"/>
 
@@ -31,6 +31,13 @@
                 android:layout_weight=".30"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_search" />
+
+            <Button
+                    android:id="@+id/btnAddProduct"
+                    android:layout_width="0dp"
+                    android:layout_weight=".15"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_add" />
         </TableRow>
 
     </TableLayout>

@@ -16,7 +16,7 @@ public class SaleGUI extends Activity {
 
     //region Var
     AddAction addAction;
-    int totalSale = 0;
+    float totalSale = 0;
     TextView lblCustomer, lblTotal;
     Customer customer;
     ProductAdapter adapter;
@@ -79,11 +79,11 @@ public class SaleGUI extends Activity {
     }
 
     void SetProduct(Bundle bundle){
-        totalSale += bundle.getInt("price");
-        lblTotal.setText(getString(R.string.currency_symbol) + Integer.toString(totalSale));
+        totalSale += bundle.getFloat("price");
+        lblTotal.setText(getString(R.string.currency_symbol) + Functions.GetFloatValueWithTwoDecimals(totalSale));
 
         Product product = new Product(bundle.getInt("id"),bundle.getString("name"));
-        product.setPrice(bundle.getInt("price"));
+        product.setPrice(bundle.getFloat("price"));
 
         if(adapter==null){
             ArrayList<Product> products = new ArrayList<Product>();
@@ -99,7 +99,7 @@ public class SaleGUI extends Activity {
     void DeleteProduct(){
         Product product = adapter.getItem(position);
         totalSale -= product.getPrice();
-        lblTotal.setText(getString(R.string.currency_symbol) + Integer.toString(totalSale));
+        lblTotal.setText(getString(R.string.currency_symbol) + Functions.GetFloatValueWithTwoDecimals(totalSale));
 
         adapter.remove(product);
         adapter.notifyDataSetChanged();
