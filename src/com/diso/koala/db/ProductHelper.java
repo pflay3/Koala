@@ -51,20 +51,15 @@ public class ProductHelper {
         return Select(String.format(sql, "%", name, "%"));
     }
 
-    private void ExecuteNonQuery(String sqlNonQuery){
-        SQLiteDatabase db = kdb.getWritableDatabase();
-        db.execSQL(sqlNonQuery);
-    }
-
     public int Insert(Product product){
         String sql = "INSERT INTO Products VALUES (NULL, '%s', %f, '%s', '%s')";
-        ExecuteNonQuery(String.format(sql, product.getName(), product.getPrice(), product.getBarcode(), product.getDescription()));
+        kdb.ExecuteNonQuery(String.format(sql, product.getName(), product.getPrice(), product.getBarcode(), product.getDescription()));
         return kdb.GetLastId("Products");
     }
 
     public void Update(Product product){
         String sql = "UPDATE Products SET name = '%s', price = %f, barcode = '%s', description = '%s' WHERE id = %d";
-        ExecuteNonQuery(String.format(sql, product.getName(), product.getPrice(), product.getBarcode(), product.getDescription(), product.getId()));
+        kdb.ExecuteNonQuery(String.format(sql, product.getName(), product.getPrice(), product.getBarcode(), product.getDescription(), product.getId()));
     }
     //endregion
 }

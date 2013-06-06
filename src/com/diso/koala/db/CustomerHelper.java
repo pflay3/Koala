@@ -49,20 +49,15 @@ public class CustomerHelper{
         return Select(String.format(sql, "%" + name + "%"));
     }
 
-    private void ExecuteNonQuery(String sqlNonQuery){
-        SQLiteDatabase db = kdb.getWritableDatabase();
-        db.execSQL(sqlNonQuery);
-    }
-
     public int Insert(Customer customer){
         String sql = "INSERT INTO Customers VALUES (NULL, '%s', '%s')";
-        ExecuteNonQuery(String.format(sql, customer.getName(), customer.getIdentification()));
+        kdb.ExecuteNonQuery(String.format(sql, customer.getName(), customer.getIdentification()));
         return kdb.GetLastId("Customers");
     }
 
     public void Update(Customer customer){
         String sql = "UPDATE Customers SET name = '%s', identification = '%s' WHERE id = %d";
-        ExecuteNonQuery(String.format(sql, customer.getName(), customer.getIdentification(), customer.getId()));
+        kdb.ExecuteNonQuery(String.format(sql, customer.getName(), customer.getIdentification(), customer.getId()));
     }
     //endregion
 }

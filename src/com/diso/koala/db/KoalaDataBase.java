@@ -29,6 +29,7 @@ public class KoalaDataBase extends SQLiteOpenHelper {
         super(context, "Koala", null, R.integer.db_version);
     }
 
+    //region Override
     @Override
     public void onCreate(SQLiteDatabase db){
         if(db.isReadOnly()){ db = this.getWritableDatabase(); }
@@ -50,6 +51,7 @@ public class KoalaDataBase extends SQLiteOpenHelper {
             CreateTables(db);
         }
     }
+    //endregion
 
     void CreateTables(SQLiteDatabase db){
         db.execSQL(sqlCreateCustomer);
@@ -71,5 +73,10 @@ public class KoalaDataBase extends SQLiteOpenHelper {
 
         if (c != null && c.moveToFirst()) { return c.getInt(0); }
         return -1;
+    }
+
+    public void ExecuteNonQuery(String sqlNonQuery){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL(sqlNonQuery);
     }
 }

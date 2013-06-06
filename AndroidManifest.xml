@@ -18,5 +18,6 @@
         <activity android:name=".CustomerListGUI"/>
         <activity android:name=".CustomerGUI"/>
         <activity android:name=".ProductListGUI"/>
+        <activity android:name=".SaleListGUI"/>
     </application>
 </manifest>

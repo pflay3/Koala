@@ -45,23 +45,18 @@ public class SaleDetailHelper{
 
     public SaleDetail[] SelectByHeaderId(int id){
         String sql = "SELECT id, id_salesHeaders, id_products, product_name, product_price FROM SalesDetails WHERE id_salesHeaders = %d";
-        return Select(sql);
-    }
-
-    private void ExecuteNonQuery(String sqlNonQuery){
-        SQLiteDatabase db = kdb.getWritableDatabase();
-        db.execSQL(sqlNonQuery);
+        return Select(String.format(sql, id));
     }
 
     public int Insert(SaleDetail saleDetail){
         String sql = "INSERT INTO SalesDetails VALUES (NULL, %d, %d, '%s', %f)";
-        ExecuteNonQuery(String.format(sql, saleDetail.getId_salesHeaders(), saleDetail.getId_products(), saleDetail.getProduct_name(), saleDetail.getProduct_price()));
+        kdb.ExecuteNonQuery(String.format(sql, saleDetail.getId_salesHeaders(), saleDetail.getId_products(), saleDetail.getProduct_name(), saleDetail.getProduct_price()));
         return kdb.GetLastId("SalesDetails");
     }
 
     public void Update(SaleDetail saleDetail){
         String sql = "UPDATE SalesDetails SET id_salesHeaders = %d, id_products = %d, product_name = '%s', product_price = %f WHERE id = %d";
-        ExecuteNonQuery(String.format(sql ,saleDetail.getId_salesHeaders(), saleDetail.getId_products(), saleDetail.getProduct_name(), saleDetail.getProduct_price(), saleDetail.getId()));
+        kdb.ExecuteNonQuery(String.format(sql ,saleDetail.getId_salesHeaders(), saleDetail.getId_products(), saleDetail.getProduct_name(), saleDetail.getProduct_price(), saleDetail.getId()));
     }
     //endregion
 }

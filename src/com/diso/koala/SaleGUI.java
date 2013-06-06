@@ -151,15 +151,7 @@ public class SaleGUI extends Activity {
 
     void LoadPaymentTypes(){
         paymentTypes = paymentTypeHelper.SelectAll();
-        final String[] paymentAdapter = new String[paymentTypes.length];
-
-        for (int i = 0; i < paymentTypes.length; i++){
-            paymentAdapter[i] = paymentTypes[i].getDescription();
-        }
-
-        ArrayAdapter<String> data = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, paymentAdapter);
-        data.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
-        cmbPaymentType.setAdapter( data );
+        cmbPaymentType.setAdapter( Functions.GetPaymentTypes( this, paymentTypes ) );
     }
 
     int GetIdPaymentTypes(){
@@ -197,6 +189,7 @@ public class SaleGUI extends Activity {
 
     boolean ValidateSaveSale(){
         if ( customer == null ){ return false; }
+        if ( productAdapter == null ){ return false; }
         if ( productAdapter.getCount() == 0 ){ return false; }
 
         return  true;

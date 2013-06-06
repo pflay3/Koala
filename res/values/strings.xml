@@ -11,6 +11,7 @@
     <!--Home-->
     <string name="title_home">¿Qué desea hacer?</string>
     <string name="btn_sale">Vender</string>
+    <string name="btn_sale_list">Ver Ventas</string>
     <string name="btn_products">Ver Productos</string>
     <string name="btn_add_product">Agregar Producto</string>
     <string name="btn_customers">Ver Clientes</string>
@@ -45,4 +46,6 @@
     <string name="customer_identification">Cédula</string>
     <!--Customer List-->
     <string name="title_customer_list">Lista de Clientes</string>
+    <!--Sale List-->
+    <string name="title_sale_list">Ver Ventas</string>
 </resources>
