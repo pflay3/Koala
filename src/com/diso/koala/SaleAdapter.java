@@ -15,12 +15,12 @@ public class SaleAdapter extends ArrayAdapter<SaleHeader> {
     Activity context;
 
     SaleAdapter(Activity context, SaleHeader[] products) {
-        super(context, R.layout.product_list_item, products);
+        super(context, R.layout.sale_list_item, products);
         this.context = context;
     }
 
     SaleAdapter(Activity context, ArrayList<SaleHeader> products) {
-        super(context, R.layout.product_list_item, products);
+        super(context, R.layout.sale_list_item, products);
         this.context = context;
     }
 

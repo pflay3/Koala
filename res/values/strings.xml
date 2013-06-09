@@ -48,4 +48,7 @@
     <string name="title_customer_list">Lista de Clientes</string>
     <!--Sale List-->
     <string name="title_sale_list">Ver Ventas</string>
+    <string name="sale_payment_type_question">¿Pagó?</string>
+    <string name="sale_payment_type_yes">Si</string>
+    <string name="sale_payment_type_no">No</string>
 </resources>
