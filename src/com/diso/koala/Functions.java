@@ -2,7 +2,10 @@ package com.diso.koala;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;
-import com.diso.koala.db.PaymentType;
+import com.diso.koala.db.entities.PaymentType;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /***
  * Provide the Application's commons functions
@@ -46,5 +49,16 @@ public class Functions {
         data.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
 
         return data;
+    }
+
+    /**
+     * Convert Date in String
+     * @param date Date
+     * @param format Format of return
+     * @return String with the date
+     */
+    public static String GetDate(Date date, String format){
+        SimpleDateFormat ft = new SimpleDateFormat (format);
+        return ft.format( date );
     }
 }
