@@ -14,6 +14,7 @@ import com.diso.koala.db.entities.PaymentType;
 import com.diso.koala.db.entities.SaleHeader;
 import com.diso.koala.db.helpers.PaymentTypeHelper;
 import com.diso.koala.db.helpers.SaleHeaderHelper;
+import com.diso.koala.interfaces.OnPaymentTypeChangeListener;
 
 import java.util.ArrayList;
 
@@ -101,6 +102,13 @@ public class SaleListGUI extends Activity {
             saleAdapter = new SaleAdapter(this, saleHeaders);
             ListView lstProducts = (ListView)findViewById(R.id.lstSaleList);
             lstProducts.setAdapter(saleAdapter);
+
+            saleAdapter.setOnPaymentTypeChangeListener(new OnPaymentTypeChangeListener() {
+                @Override
+                public void OnPaymentTypeChange(int position, boolean isChecked) {
+                    UpdatePaymentType(position, isChecked);
+                }
+            });
         }
         else if(saleAdapter.getCount() == 0){
             saleAdapter.addAll(saleHeaders);
@@ -122,7 +130,7 @@ public class SaleListGUI extends Activity {
 
     void LoadPaymentTypes(){
         paymentTypes = paymentTypeHelper.SelectAll();
-        cmbPaymentType.setAdapter( Functions.GetPaymentTypesWithExtra( this, paymentTypes ) );
+        cmbPaymentType.setAdapter( Functions.GetPaymentTypesWithExtra(this, paymentTypes) );
     }
 
     void GetFields(){
@@ -203,5 +211,15 @@ public class SaleListGUI extends Activity {
     int GetIdPaymentTypes(){
         if (cmbPaymentType.getSelectedItemPosition() == 0){ return 0; }
         return paymentTypes[ cmbPaymentType.getSelectedItemPosition() - 1 ].getId();
+    }
+
+    void UpdatePaymentType(int position, boolean isChecked){
+        SaleHeader saleHeader = saleHeaders.get(position);
+        int newPaymentType = isChecked ? 1 : 2;
+
+        if(saleHeader.getId_paymentTypes() != newPaymentType){
+            saleHeader.setId_paymentTypes(newPaymentType);
+            saleHeaderHelper.UpdatePaymentTypeById(saleHeader);
+        }
     }
 }

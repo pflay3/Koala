@@ -5,16 +5,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 import com.diso.koala.Functions;
 import com.diso.koala.R;
 import com.diso.koala.db.entities.SaleHeader;
+import com.diso.koala.interfaces.OnPaymentTypeChangeListener;
 
 import java.util.ArrayList;
 
 public class SaleAdapter extends ArrayAdapter<SaleHeader> {
     Activity context;
+    private OnPaymentTypeChangeListener onPaymentTypeChangeListener;
 
     public SaleAdapter(Activity context, SaleHeader[] products) {
         super(context, R.layout.sale_list_item, products);
@@ -26,7 +29,7 @@ public class SaleAdapter extends ArrayAdapter<SaleHeader> {
         this.context = context;
     }
 
-    public View getView(int position, View contentView, ViewGroup parent){
+    public View getView(final int position, View contentView, ViewGroup parent){
         View item = contentView;
         SaleAdapterHolder saleAdapterHolder;
 
@@ -48,10 +51,26 @@ public class SaleAdapter extends ArrayAdapter<SaleHeader> {
         SaleHeader saleHeader = (SaleHeader)getItem(position);
         saleAdapterHolder.lblDate.setText(Functions.GetDate(saleHeader.getDate_sale(), "yyyy-MM-dd"));
         saleAdapterHolder.lblSaleTotal.setText(Functions.GetFloatValueWithTwoDecimals(saleHeader.getTotal()));
+
         if (saleHeader.getId_paymentTypes() == 1){ saleAdapterHolder.tbPaymentType.setChecked(true); }
         else{ saleAdapterHolder.tbPaymentType.setChecked(false); }
 
+        saleAdapterHolder.tbPaymentType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventPaymentType(position, ((ToggleButton)v).isChecked());
+            }
+        });
+
         return(item);
+    }
+
+    public void setOnPaymentTypeChangeListener(OnPaymentTypeChangeListener listener){
+        onPaymentTypeChangeListener = listener;
+    }
+
+    void EventPaymentType(int position, boolean isChecked){
+        onPaymentTypeChangeListener.OnPaymentTypeChange(position, isChecked);
     }
 
     static class SaleAdapterHolder{
@@ -60,3 +79,4 @@ public class SaleAdapter extends ArrayAdapter<SaleHeader> {
         TextView lblSaleTotal;
     }
 }
+

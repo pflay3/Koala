@@ -114,6 +114,11 @@ public class SaleHeaderHelper {
         String sql = "UPDATE SalesHeaders SET id_customers = %d, customer_name = '%s', total = %f, id_paymentTypes = %d, date_sale = '%s' WHERE id = %d";
         kdb.ExecuteNonQuery(String.format(sql, saleHeader.getId_customers(), saleHeader.getCustomer_name(), saleHeader.getTotal(), saleHeader.getId_paymentTypes(), GetDate(saleHeader.getDate_sale()), saleHeader.getId()));
     }
+
+    public void UpdatePaymentTypeById(SaleHeader saleHeader){
+        String sql = "UPDATE SalesHeaders SET id_paymentTypes = %d WHERE id = %d";
+        kdb.ExecuteNonQuery(String.format(sql, saleHeader.getId_paymentTypes(), saleHeader.getId()));
+    }
     //endregion
 
     String GetDate(Date date){
