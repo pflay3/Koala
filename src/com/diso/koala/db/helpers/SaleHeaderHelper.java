@@ -69,10 +69,21 @@ public class SaleHeaderHelper {
         else{return null;}
     }
 
-    public ArrayList<SaleHeader> SelectWithDetails(ArrayList<QueryFilter> queryFilter){
+    public ArrayList<SaleHeader> SelectByFilter(ArrayList<QueryFilter> queryFilter){
         StringBuilder sbQuery = new StringBuilder();
         sbQuery.append( "SELECT id, id_customers, customer_name, total, id_paymentTypes, date_sale FROM SalesHeaders WHERE " );
         sbQuery.append( QueryBuilder.GetQueryFilter(queryFilter) );
+        sbQuery.append( " ORDER BY date_sale DESC" );
+
+        ArrayList<SaleHeader> saleHeaders = Select(sbQuery.toString());
+        return saleHeaders;
+    }
+
+    public ArrayList<SaleHeader> SelectByFilterWithDetails(ArrayList<QueryFilter> queryFilter){
+        StringBuilder sbQuery = new StringBuilder();
+        sbQuery.append( "SELECT id, id_customers, customer_name, total, id_paymentTypes, date_sale FROM SalesHeaders WHERE " );
+        sbQuery.append( QueryBuilder.GetQueryFilter(queryFilter) );
+        sbQuery.append( " ORDER BY date_sale DESC" );
 
         ArrayList<SaleHeader> saleHeaders = Select(sbQuery.toString());
         for (SaleHeader saleHeader: saleHeaders){

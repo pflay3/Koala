@@ -33,7 +33,7 @@ public class Functions {
     }
 
     /***
-     * Get a list the payment types into array adapter
+     * Get payment types' list into array adapter
      * @param context The current context.
      * @param paymentTypes Vector of Payment Types
      * @return Array Adapter into array adapter
@@ -45,6 +45,33 @@ public class Functions {
             paymentAdapter[i] = paymentTypes[i].getDescription();
         }
 
+        return GetPaymentTypes(context, paymentAdapter);
+    }
+
+    /***
+     * Get payment types' list with extra value into array adapter
+     * @param context The current context.
+     * @param paymentTypes Vector of Payment Types
+     * @return Array Adapter into array adapter
+     */
+    public static ArrayAdapter<String> GetPaymentTypesWithExtra(Context context, PaymentType[] paymentTypes){
+        final String[] paymentAdapter = new String[paymentTypes.length + 1];
+
+        paymentAdapter[0] = context.getResources().getString( R.string.payment_types_extra );
+        for (int i = 1; i <= paymentTypes.length; i++){
+            paymentAdapter[i] = paymentTypes[i - 1].getDescription();
+        }
+
+        return GetPaymentTypes(context, paymentAdapter);
+    }
+
+    /***
+     * Get payment types' list into array adapter
+     * @param context The current context.
+     * @param paymentAdapter Vector of String with the values
+     * @return Array Adapter into array adapter
+     */
+    private static ArrayAdapter<String> GetPaymentTypes(Context context, String[] paymentAdapter){
         ArrayAdapter<String> data = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, paymentAdapter);
         data.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
 

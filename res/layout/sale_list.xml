@@ -83,7 +83,7 @@
                 android:layout_width="0dp"
                 android:layout_weight=".55"
                 android:layout_height="wrap_content"
-                android:text="@string/name"
+                android:text="@string/txt_date"
                 android:textSize="15sp" />
 
         <TextView

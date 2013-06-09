@@ -63,6 +63,16 @@ public class SaleListGUI extends Activity {
         SetSales();
     }
 
+    void ShowSalesByPaymentType(){
+        if(customer != null){
+            CleanSales();
+            GetSalesByCustomer();
+            CalculateTotal();
+            SetTotal();
+            SetSales();
+        }
+    }
+
     void SetCustomer(Bundle bundle){
         customer = new Customer(bundle.getInt("id"), bundle.getString("name"));
         lblCustomer.setText(getString(R.string.text_customer) + " " + customer.getName());
@@ -75,12 +85,15 @@ public class SaleListGUI extends Activity {
         queryFilter.setValue( Integer.toString(customer.getId()) );
         queryFilters.add( queryFilter );
 
-        queryFilter = new QueryFilter();
-        queryFilter.setField( "id_paymentTypes" );
-        queryFilter.setValue( Integer.toString(GetIdPaymentTypes()) );
-        queryFilters.add( queryFilter );
+        final int idPaymentType = GetIdPaymentTypes();
+        if(idPaymentType != 0){
+            queryFilter = new QueryFilter();
+            queryFilter.setField( "id_paymentTypes" );
+            queryFilter.setValue( Integer.toString(GetIdPaymentTypes()) );
+            queryFilters.add( queryFilter );
+        }
 
-        saleHeaders = saleHeaderHelper.SelectWithDetails( queryFilters );
+        saleHeaders = saleHeaderHelper.SelectByFilter(queryFilters);
     }
 
     void SetSales(){
@@ -109,7 +122,7 @@ public class SaleListGUI extends Activity {
 
     void LoadPaymentTypes(){
         paymentTypes = paymentTypeHelper.SelectAll();
-        cmbPaymentType.setAdapter( Functions.GetPaymentTypes( this, paymentTypes ) );
+        cmbPaymentType.setAdapter( Functions.GetPaymentTypesWithExtra( this, paymentTypes ) );
     }
 
     void GetFields(){
@@ -126,10 +139,7 @@ public class SaleListGUI extends Activity {
         lblCustomer.setText(getString(R.string.text_customer));
 
         // Sales
-        if(saleAdapter != null){
-            saleAdapter.clear();
-            saleAdapter.notifyDataSetChanged();
-        }
+        CleanSales();
 
         // Payment Type
         //cmbPaymentType.setSelection(0);
@@ -139,13 +149,31 @@ public class SaleListGUI extends Activity {
         SetTotal();
     }
 
+    void CleanSales(){
+        if(saleAdapter != null){
+            saleAdapter.clear();
+            saleAdapter.notifyDataSetChanged();
+        }
+    }
+
     //endregion
 
     void Events(){
         StartActivity((Button)findViewById(R.id.btnAddCustomer), CustomerListGUI.class);
 
-        final ListView lstProducts = (ListView)findViewById(R.id.lstSaleList);
-        lstProducts.setOnItemClickListener(
+        final Spinner cmbPaymentType = (Spinner)findViewById(R.id.cmbPaymentType);
+        cmbPaymentType.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ShowSalesByPaymentType();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        final ListView lstSaleList = (ListView)findViewById(R.id.lstSaleList);
+        lstSaleList.setOnItemClickListener(
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -173,6 +201,7 @@ public class SaleListGUI extends Activity {
     }
 
     int GetIdPaymentTypes(){
-        return paymentTypes[ cmbPaymentType.getSelectedItemPosition() ].getId();
+        if (cmbPaymentType.getSelectedItemPosition() == 0){ return 0; }
+        return paymentTypes[ cmbPaymentType.getSelectedItemPosition() - 1 ].getId();
     }
 }
