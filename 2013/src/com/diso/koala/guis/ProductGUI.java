@@ -60,13 +60,13 @@ public class ProductGUI extends Activity {
 
             if(booEdit){ productHelper.UpdateById(product); }
             else{
-                product.setId( productHelper.Insert(product) );
+                product.setId_product(productHelper.Insert(product));
                 ResetControls();
 
                 if(booReturn){
                     Intent intent = new Intent();
                     Bundle bundle = new Bundle();
-                    bundle.putInt("id", product.getId());
+                    bundle.putInt("id", product.getId_product());
                     bundle.putString("name", product.getName());
                     bundle.putFloat("price", product.getPrice());
                     intent.putExtras(bundle);

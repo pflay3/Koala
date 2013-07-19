@@ -35,19 +35,19 @@ public class ProductHelper {
     }
 
     public Product[] SelectAll(){
-        String sql = "SELECT id, name, price, barcode, description FROM Products";
+        String sql = "SELECT id_product, name, price, barcode, description FROM Products";
         return Select(sql);
     }
 
     public Product SelectById(int id){
-        String sql = "SELECT id, name, price, barcode, description FROM Products WHERE id = %d";
+        String sql = "SELECT id_product, name, price, barcode, description FROM Products WHERE id_product = %d";
         Product[] products = Select(String.format(sql, id));
         if(products.length > 0){ return products[0]; }
         else{return null;}
     }
 
     public Product[] SelectByName(String name){
-        String sql = "SELECT id, name, price, barcode, description FROM Products WHERE name like '%s%s%s'";
+        String sql = "SELECT id_product, name, price, barcode, description FROM Products WHERE name like '%s%s%s'";
         return Select(String.format(sql, "%", name, "%"));
     }
 
@@ -58,8 +58,8 @@ public class ProductHelper {
     }
 
     public void UpdateById(Product product){
-        String sql = "UPDATE Products SET name = '%s', price = %f, barcode = '%s', description = '%s' WHERE id = %d";
-        kdb.ExecuteNonQuery(String.format(sql, product.getName(), product.getPrice(), product.getBarcode(), product.getDescription(), product.getId()));
+        String sql = "UPDATE Products SET name = '%s', price = %f, barcode = '%s', description = '%s' WHERE id_product = %d";
+        kdb.ExecuteNonQuery(String.format(sql, product.getName(), product.getPrice(), product.getBarcode(), product.getDescription(), product.getId_product()));
     }
     //endregion
 }

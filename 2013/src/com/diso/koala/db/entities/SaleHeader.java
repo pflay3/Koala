@@ -5,33 +5,33 @@ import java.util.Arrays;
 import java.util.Date;
 
 public class SaleHeader {
-    private int id;
-    private int id_customers;
+    private int id_sale_header;
+    private int id_customer;
     private String customer_name;
     private float total;
-    private int id_paymentTypes;
+    private int id_payment_type;
     private ArrayList<SaleDetail> details;
     private Date date_sale;
 
-    public SaleHeader(int id, int id_customers){
-        this.id = id;
-        this.id_customers = id_customers;
+    public SaleHeader(int id, int id_customer){
+        this.id_sale_header = id;
+        this.id_customer = id_customer;
     }
 
-    public int getId() {
-        return id;
+    public int getId_sale_header() {
+        return id_sale_header;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_sale_header(int id) {
+        this.id_sale_header = id;
     }
 
-    public int getId_customers() {
-        return id_customers;
+    public int getId_customer() {
+        return id_customer;
     }
 
-    public void setId_customers(int id_customers) {
-        this.id_customers = id_customers;
+    public void setId_customer(int id_customer) {
+        this.id_customer = id_customer;
     }
 
     public String getCustomer_name() {
@@ -50,12 +50,12 @@ public class SaleHeader {
         this.total = total;
     }
 
-    public int getId_paymentTypes() {
-        return id_paymentTypes;
+    public int getId_payment_type() {
+        return id_payment_type;
     }
 
-    public void setId_paymentTypes(int id_paymentTypes) {
-        this.id_paymentTypes = id_paymentTypes;
+    public void setId_payment_type(int id_payment_type) {
+        this.id_payment_type = id_payment_type;
     }
 
     public Date getDate_sale() {

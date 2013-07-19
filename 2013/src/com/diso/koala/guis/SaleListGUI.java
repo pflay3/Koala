@@ -82,14 +82,14 @@ public class SaleListGUI extends Activity {
     void GetSalesByCustomer( ){
         ArrayList<QueryFilter> queryFilters = new ArrayList<QueryFilter>();
         QueryFilter queryFilter = new QueryFilter();
-        queryFilter.setField( "id_customers" );
-        queryFilter.setValue( Integer.toString(customer.getId()) );
+        queryFilter.setField( "id_customer" );
+        queryFilter.setValue( Integer.toString(customer.getId_customer()) );
         queryFilters.add( queryFilter );
 
         final int idPaymentType = GetIdPaymentTypes();
         if(idPaymentType != 0){
             queryFilter = new QueryFilter();
-            queryFilter.setField( "id_paymentTypes" );
+            queryFilter.setField( "id_payment_type" );
             queryFilter.setValue( Integer.toString(GetIdPaymentTypes()) );
             queryFilters.add( queryFilter );
         }
@@ -210,15 +210,15 @@ public class SaleListGUI extends Activity {
 
     int GetIdPaymentTypes(){
         if (cmbPaymentType.getSelectedItemPosition() == 0){ return 0; }
-        return paymentTypes[ cmbPaymentType.getSelectedItemPosition() - 1 ].getId();
+        return paymentTypes[ cmbPaymentType.getSelectedItemPosition() - 1 ].getId_payment_type();
     }
 
     void UpdatePaymentType(int position, boolean isChecked){
         SaleHeader saleHeader = saleHeaders.get(position);
         int newPaymentType = isChecked ? 1 : 2;
 
-        if(saleHeader.getId_paymentTypes() != newPaymentType){
-            saleHeader.setId_paymentTypes(newPaymentType);
+        if(saleHeader.getId_payment_type() != newPaymentType){
+            saleHeader.setId_payment_type(newPaymentType);
             saleHeaderHelper.UpdatePaymentTypeById(saleHeader);
         }
     }

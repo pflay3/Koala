@@ -108,7 +108,7 @@ public class ProductListGUI extends Activity {
         Intent intent = new Intent(ProductListGUI.this, ProductGUI.class);
 
         Bundle bundle = new Bundle();
-        bundle.putInt("id", products[position].getId());
+        bundle.putInt("id", products[position].getId_product());
         bundle.putString("action", "edit");
         intent.putExtras(bundle);
 
@@ -119,7 +119,7 @@ public class ProductListGUI extends Activity {
         Intent intent = new Intent();
 
         Bundle bundle = new Bundle();
-        bundle.putInt("id", product.getId());
+        bundle.putInt("id", product.getId_product());
         bundle.putString("name", product.getName());
         bundle.putFloat("price", product.getPrice());
         intent.putExtras(bundle);

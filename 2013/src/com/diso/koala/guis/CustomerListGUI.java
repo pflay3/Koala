@@ -111,7 +111,7 @@ public class CustomerListGUI extends Activity {
         Intent intent = new Intent(CustomerListGUI.this, CustomerGUI.class);
 
         Bundle bundle = new Bundle();
-        bundle.putInt("id", customers[position].getId());
+        bundle.putInt("id", customers[position].getId_customer());
         bundle.putString("action", "edit");
         intent.putExtras(bundle);
 
@@ -122,7 +122,7 @@ public class CustomerListGUI extends Activity {
         Intent intent = new Intent();
 
         Bundle bundle = new Bundle();
-        bundle.putInt("id", customer.getId());
+        bundle.putInt("id", customer.getId_customer());
         bundle.putString("name", customer.getName());
         intent.putExtras(bundle);
         setResult(Activity.RESULT_OK,intent);

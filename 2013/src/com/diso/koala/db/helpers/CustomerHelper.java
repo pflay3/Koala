@@ -33,19 +33,19 @@ public class CustomerHelper{
     }
 
     public Customer[] SelectAll(){
-        String sql = "SELECT id, name, identification FROM Customers";
+        String sql = "SELECT id_customer, name, identification FROM Customers";
         return Select(sql);
     }
 
     public Customer SelectById(int id){
-        String sql = "SELECT id, name, identification FROM Customers WHERE id = %d";
+        String sql = "SELECT id_customer, name, identification FROM Customers WHERE id_customer = %d";
         Customer[] customers = Select(String.format(sql, id));
         if(customers.length > 0){ return customers[0]; }
         else{return null;}
     }
 
     public Customer[] SelectByName(String name){
-        String sql = "SELECT id, name, identification FROM Customers WHERE name like '%s'";
+        String sql = "SELECT id_customer, name, identification FROM Customers WHERE name like '%s'";
         return Select(String.format(sql, "%" + name + "%"));
     }
 
@@ -56,8 +56,8 @@ public class CustomerHelper{
     }
 
     public void UpdateById(Customer customer){
-        String sql = "UPDATE Customers SET name = '%s', identification = '%s' WHERE id = %d";
-        kdb.ExecuteNonQuery(String.format(sql, customer.getName(), customer.getIdentification(), customer.getId()));
+        String sql = "UPDATE Customers SET name = '%s', identification = '%s' WHERE id_customer = %d";
+        kdb.ExecuteNonQuery(String.format(sql, customer.getName(), customer.getIdentification(), customer.getId_customer()));
     }
     //endregion
 }

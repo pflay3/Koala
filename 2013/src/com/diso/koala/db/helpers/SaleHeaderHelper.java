@@ -29,14 +29,13 @@ public class SaleHeaderHelper {
         SQLiteDatabase db = kdb.getReadableDatabase();
         Cursor c = db.rawQuery(sqlSelect, null);
         ArrayList<SaleHeader> saleHeaders = new ArrayList<SaleHeader>();
-        //int pos = 0;
 
         if (c.moveToFirst()) {
             do {
                 SaleHeader saleHeader = new SaleHeader(c.getInt(0), c.getInt(1));
                 saleHeader.setCustomer_name(c.getString(2));
                 saleHeader.setTotal(c.getFloat(3));
-                saleHeader.setId_paymentTypes(c.getInt(4));
+                saleHeader.setId_payment_type(c.getInt(4));
                 saleHeader.setDate_sale( GetDate(c.getString(5) ));
                 saleHeaders.add(saleHeader);
                 //pos++;
@@ -47,22 +46,22 @@ public class SaleHeaderHelper {
     }
 
     public ArrayList<SaleHeader> SelectAll(){
-        String sql = "SELECT id, id_customers, customer_name, total, id_paymentTypes, date_sale FROM SalesHeaders";
+        String sql = "SELECT id_sale_header, id_customer, customer_name, total, id_payment_type, date_sale FROM SalesHeaders";
         return Select(sql);
     }
 
     public SaleHeader SelectById(int id){
-        String sql = "SELECT id, id_customers, customer_name, total, id_paymentTypes, date_sale FROM SalesHeaders WHERE id = %d";
+        String sql = "SELECT id_sale_header, id_customer, customer_name, total, id_payment_type, date_sale FROM SalesHeaders WHERE id_sale_header = %d";
         ArrayList<SaleHeader> saleHeaders = Select(String.format(sql, id));
         if(saleHeaders.size() > 0){ return saleHeaders.get(0); }
         else{return null;}
     }
 
     public SaleHeader SelectByIdWithDetails(int id){
-        String sql = "SELECT id, id_customers, customer_name, total, id_paymentTypes, date_sale FROM SalesHeaders WHERE id = %d";
+        String sql = "SELECT id_sale_header, id_customer, customer_name, total, id_payment_type, date_sale FROM SalesHeaders WHERE id_sale_header = %d";
         ArrayList<SaleHeader> saleHeaders = Select(String.format(sql, id));
         if(saleHeaders.size() > 0){
-            SaleDetail[] saleDetails = saleDetailHelper.SelectByHeaderId(saleHeaders.get(0).getId());
+            SaleDetail[] saleDetails = saleDetailHelper.SelectByHeaderId(saleHeaders.get(0).getId_sale_header());
             saleHeaders.get(0).addDetails(saleDetails);
             return saleHeaders.get(0);
         }
@@ -71,7 +70,7 @@ public class SaleHeaderHelper {
 
     public ArrayList<SaleHeader> SelectByFilter(ArrayList<QueryFilter> queryFilter){
         StringBuilder sbQuery = new StringBuilder();
-        sbQuery.append( "SELECT id, id_customers, customer_name, total, id_paymentTypes, date_sale FROM SalesHeaders WHERE " );
+        sbQuery.append( "SELECT id_sale_header, id_customer, customer_name, total, id_payment_type, date_sale FROM SalesHeaders WHERE " );
         sbQuery.append( QueryBuilder.GetQueryFilter(queryFilter) );
         sbQuery.append( " ORDER BY date_sale DESC" );
 
@@ -81,13 +80,13 @@ public class SaleHeaderHelper {
 
     public ArrayList<SaleHeader> SelectByFilterWithDetails(ArrayList<QueryFilter> queryFilter){
         StringBuilder sbQuery = new StringBuilder();
-        sbQuery.append( "SELECT id, id_customers, customer_name, total, id_paymentTypes, date_sale FROM SalesHeaders WHERE " );
+        sbQuery.append( "SELECT id_sale_header, id_customer, customer_name, total, id_payment_type, date_sale FROM SalesHeaders WHERE " );
         sbQuery.append( QueryBuilder.GetQueryFilter(queryFilter) );
         sbQuery.append( " ORDER BY date_sale DESC" );
 
         ArrayList<SaleHeader> saleHeaders = Select(sbQuery.toString());
         for (SaleHeader saleHeader: saleHeaders){
-            SaleDetail[] saleDetails = saleDetailHelper.SelectByHeaderId(saleHeader.getId());
+            SaleDetail[] saleDetails = saleDetailHelper.SelectByHeaderId(saleHeader.getId_sale_header());
             saleHeader.addDetails(saleDetails);
         }
 
@@ -96,28 +95,28 @@ public class SaleHeaderHelper {
 
     public int Insert(SaleHeader saleHeader){
         String sql = "INSERT INTO SalesHeaders VALUES (NULL, %d, '%s', %f, %d, '%s')";
-        kdb.ExecuteNonQuery(String.format(sql, saleHeader.getId_customers(), saleHeader.getCustomer_name(), saleHeader.getTotal(), saleHeader.getId_paymentTypes(), GetDate(saleHeader.getDate_sale())));
+        kdb.ExecuteNonQuery(String.format(sql, saleHeader.getId_customer(), saleHeader.getCustomer_name(), saleHeader.getTotal(), saleHeader.getId_payment_type(), GetDate(saleHeader.getDate_sale())));
         return kdb.GetLastId("SalesHeaders");
     }
 
     public int InsertWithDetails(SaleHeader saleHeader){
-        saleHeader.setId(this.Insert(saleHeader));
+        saleHeader.setId_sale_header(this.Insert(saleHeader));
         for ( SaleDetail saleDetail: saleHeader.getDetails() ){
-            saleDetail.setId_salesHeaders(saleHeader.getId());
+            saleDetail.setId_sale_header(saleHeader.getId_sale_header());
             saleDetailHelper.Insert( saleDetail );
         }
 
-        return saleHeader.getId();
+        return saleHeader.getId_sale_header();
     }
 
     public void UpdateById(SaleHeader saleHeader){
-        String sql = "UPDATE SalesHeaders SET id_customers = %d, customer_name = '%s', total = %f, id_paymentTypes = %d, date_sale = '%s' WHERE id = %d";
-        kdb.ExecuteNonQuery(String.format(sql, saleHeader.getId_customers(), saleHeader.getCustomer_name(), saleHeader.getTotal(), saleHeader.getId_paymentTypes(), GetDate(saleHeader.getDate_sale()), saleHeader.getId()));
+        String sql = "UPDATE SalesHeaders SET id_customer = %d, customer_name = '%s', total = %f, id_payment_type = %d, date_sale = '%s' WHERE id_sale_header = %d";
+        kdb.ExecuteNonQuery(String.format(sql, saleHeader.getId_customer(), saleHeader.getCustomer_name(), saleHeader.getTotal(), saleHeader.getId_payment_type(), GetDate(saleHeader.getDate_sale()), saleHeader.getId_sale_header()));
     }
 
     public void UpdatePaymentTypeById(SaleHeader saleHeader){
-        String sql = "UPDATE SalesHeaders SET id_paymentTypes = %d WHERE id = %d";
-        kdb.ExecuteNonQuery(String.format(sql, saleHeader.getId_paymentTypes(), saleHeader.getId()));
+        String sql = "UPDATE SalesHeaders SET id_payment_type = %d WHERE id_sale_header = %d";
+        kdb.ExecuteNonQuery(String.format(sql, saleHeader.getId_payment_type(), saleHeader.getId_sale_header()));
     }
     //endregion
 

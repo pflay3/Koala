@@ -2,20 +2,20 @@ package com.diso.koala.db.entities;
 
 public class Product {
 
-    private int id;
+    private int id_product;
     private String name;
     private float price;
     private String barcode;
     private String description;
 
     public Product(int id, String name){
-        this.id = id;
+        this.id_product = id;
         this.name = name;
     }
 
     //region Set-Methods
-    public void setId(int id){
-        this.id = id;
+    public void setId_product(int id){
+        this.id_product = id;
     }
 
     public void setName(String name){
@@ -36,8 +36,8 @@ public class Product {
     //endregion
 
     //region Get-Methods
-    public int getId(){
-        return id;
+    public int getId_product(){
+        return id_product;
     }
 
     public String getName(){

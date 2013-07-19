@@ -2,21 +2,21 @@ package com.diso.koala.db.entities;
 
 public class Customer {
 
-    private int id;
+    private int id_customer;
     private String name;
     private String identification;
 
     public Customer(int id, String name){
-        this.id = id;
+        this.id_customer = id;
         this.name = name;
     }
 
-    public void setId(int id){
-        this.id = id;
+    public void setId_customer(int id){
+        this.id_customer = id;
     }
 
-    public int getId(){
-        return id;
+    public int getId_customer(){
+        return id_customer;
     }
 
     public void setName(String name){

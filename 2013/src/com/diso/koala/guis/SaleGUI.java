@@ -160,7 +160,7 @@ public class SaleGUI extends Activity {
     }
 
     int GetIdPaymentTypes(){
-        return paymentTypes[ cmbPaymentType.getSelectedItemPosition() ].getId();
+        return paymentTypes[ cmbPaymentType.getSelectedItemPosition() ].getId_payment_type();
     }
 
     void SaveSale(){
@@ -171,10 +171,10 @@ public class SaleGUI extends Activity {
         }
 
         // Header
-        SaleHeader saleHeader = new SaleHeader(0, customer.getId());
+        SaleHeader saleHeader = new SaleHeader(0, customer.getId_customer());
         saleHeader.setCustomer_name(customer.getName());
         saleHeader.setTotal(totalSale);
-        saleHeader.setId_paymentTypes(GetIdPaymentTypes());
+        saleHeader.setId_payment_type(GetIdPaymentTypes());
         saleHeader.setDate_sale( new Date());
 
         //Details
@@ -182,7 +182,7 @@ public class SaleGUI extends Activity {
             Product product = productAdapter.getItem(i);
 
             SaleDetail saleDetail = new SaleDetail(0, 0);
-            saleDetail.setId_products( product.getId() );
+            saleDetail.setId_product(product.getId_product());
             saleDetail.setProduct_name( product.getName() );
             saleDetail.setProduct_price( product.getPrice() );
             saleHeader.addDetail( saleDetail );

@@ -32,31 +32,31 @@ public class SaleDetailHelper{
     }
 
     public SaleDetail[] SelectAll(){
-        String sql = "SELECT id, id_salesHeaders, id_products, product_name, product_price FROM SalesDetails";
+        String sql = "SELECT id_sale_detail, id_sale_header, id_product, product_name, product_price FROM SalesDetails";
         return Select(sql);
     }
 
     public SaleDetail SelectById(int id){
-        String sql = "SELECT id, id_salesHeaders, id_products, product_name, product_price FROM SalesDetails WHERE id = %d";
+        String sql = "SELECT id_sale_detail, id_sale_header, id_product, product_name, product_price FROM SalesDetails WHERE id_sale_detail = %d";
         SaleDetail[] saleDetails = Select(String.format(sql, id));
         if(saleDetails.length > 0){ return saleDetails[0]; }
         else{return null;}
     }
 
     public SaleDetail[] SelectByHeaderId(int id){
-        String sql = "SELECT id, id_salesHeaders, id_products, product_name, product_price FROM SalesDetails WHERE id_salesHeaders = %d";
+        String sql = "SELECT id_sale_detail, id_sale_header, id_product, product_name, product_price FROM SalesDetails WHERE id_sale_header = %d";
         return Select(String.format(sql, id));
     }
 
     public int Insert(SaleDetail saleDetail){
         String sql = "INSERT INTO SalesDetails VALUES (NULL, %d, %d, '%s', %f)";
-        kdb.ExecuteNonQuery(String.format(sql, saleDetail.getId_salesHeaders(), saleDetail.getId_products(), saleDetail.getProduct_name(), saleDetail.getProduct_price()));
+        kdb.ExecuteNonQuery(String.format(sql, saleDetail.getId_sale_header(), saleDetail.getId_product(), saleDetail.getProduct_name(), saleDetail.getProduct_price()));
         return kdb.GetLastId("SalesDetails");
     }
 
     public void UpdateById(SaleDetail saleDetail){
-        String sql = "UPDATE SalesDetails SET id_salesHeaders = %d, id_products = %d, product_name = '%s', product_price = %f WHERE id = %d";
-        kdb.ExecuteNonQuery(String.format(sql ,saleDetail.getId_salesHeaders(), saleDetail.getId_products(), saleDetail.getProduct_name(), saleDetail.getProduct_price(), saleDetail.getId()));
+        String sql = "UPDATE SalesDetails SET id_sale_header = %d, id_product = %d, product_name = '%s', product_price = %f WHERE id_sale_detail = %d";
+        kdb.ExecuteNonQuery(String.format(sql ,saleDetail.getId_sale_header(), saleDetail.getId_product(), saleDetail.getProduct_name(), saleDetail.getProduct_price(), saleDetail.getId_sale_detail()));
     }
     //endregion
 }

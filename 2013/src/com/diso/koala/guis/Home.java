@@ -7,9 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import com.diso.koala.R;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
 import java.util.Locale;
 
 public class Home extends Activity {
@@ -19,7 +16,7 @@ public class Home extends Activity {
         Locale.setDefault(new Locale("en"));
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.home);
         Events();
     }
 

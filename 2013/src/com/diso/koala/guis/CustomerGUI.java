@@ -53,14 +53,14 @@ public class CustomerGUI extends Activity {
 
             if(booEdit){ customerHelper.UpdateById(customer); }
             else{
-                customer.setId( customerHelper.Insert(customer) );
+                customer.setId_customer(customerHelper.Insert(customer));
                 txtCustomer.setText("");
                 txtCustomerId.setText("");
 
                 if(booReturn){
                     Intent intent = new Intent();
                     Bundle bundle = new Bundle();
-                    bundle.putInt("id", customer.getId());
+                    bundle.putInt("id", customer.getId_customer());
                     bundle.putString("name", customer.getName());
                     intent.putExtras(bundle);
                     setResult(Activity.RESULT_OK,intent);

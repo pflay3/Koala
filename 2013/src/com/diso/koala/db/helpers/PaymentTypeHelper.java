@@ -32,7 +32,7 @@ public class PaymentTypeHelper {
     }
 
     public PaymentType[] SelectAll(){
-        String sql = "SELECT id, description FROM PaymentTypes";
+        String sql = "SELECT id_payment_type, description FROM PaymentTypes";
         return Select(sql);
     }
     //endregion

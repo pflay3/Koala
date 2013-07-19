@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 import com.diso.koala.Functions;
@@ -52,7 +51,7 @@ public class SaleAdapter extends ArrayAdapter<SaleHeader> {
         saleAdapterHolder.lblDate.setText(Functions.GetDate(saleHeader.getDate_sale(), "yyyy-MM-dd"));
         saleAdapterHolder.lblSaleTotal.setText(Functions.GetFloatValueWithTwoDecimals(saleHeader.getTotal()));
 
-        if (saleHeader.getId_paymentTypes() == 1){ saleAdapterHolder.tbPaymentType.setChecked(true); }
+        if (saleHeader.getId_payment_type() == 1){ saleAdapterHolder.tbPaymentType.setChecked(true); }
         else{ saleAdapterHolder.tbPaymentType.setChecked(false); }
 
         saleAdapterHolder.tbPaymentType.setOnClickListener(new View.OnClickListener() {
