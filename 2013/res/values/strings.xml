@@ -19,6 +19,7 @@
     <string name="btn_add_product">Agregar Producto</string>
     <string name="btn_customers">Ver Clientes</string>
     <string name="btn_add_customer">Agregar Cliente</string>
+    <string name="btn_about">Acerca de</string>
     <!--Add/Edit Product-->
     <string name="title_product">Información Producto</string>
     <string name="txt_product_price">Precio</string>
@@ -55,4 +56,8 @@
     <string name="sale_payment_type_no">No</string>
     <string name="sale_payment_type_change_title">¿Pagó?</string>
     <string name="sale_payment_type_change_message">¿Desea cambiar el estado del pago?</string>
+    <!--About-->
+    <string name="about_title">Información de la Aplicación</string>
+    <string name="about_version_text">Versión: 1.0</string>
+    <string name="about_app_description">Aplicación para el manejo de clientes, productos y hacer ventas mediante el dispositivo android</string>
 </resources>
