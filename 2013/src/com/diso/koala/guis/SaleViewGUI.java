@@ -7,9 +7,11 @@ import android.widget.TextView;
 import com.diso.koala.Functions;
 import com.diso.koala.R;
 import com.diso.koala.adapters.ProductAdapter;
+import com.diso.koala.db.entities.PaymentType;
 import com.diso.koala.db.entities.Product;
 import com.diso.koala.db.entities.SaleDetail;
 import com.diso.koala.db.entities.SaleHeader;
+import com.diso.koala.db.helpers.PaymentTypeHelper;
 import com.diso.koala.db.helpers.SaleHeaderHelper;
 
 import java.util.ArrayList;
@@ -52,7 +54,15 @@ public class SaleViewGUI extends Activity {
 
     // region Set
     void SetCustomer(){
-        lblCustomer.setText(getString(R.string.text_customer) + " " + saleHeader.getCustomer_name());
+        PaymentTypeHelper paymentTypeHelper = new PaymentTypeHelper(this);
+        PaymentType paymentType = paymentTypeHelper.SelectById(saleHeader.getId_payment_type());
+
+        if(paymentType != null){
+            lblCustomer.setText(getString(R.string.text_customer) + " " + saleHeader.getCustomer_name() + " (" + paymentType.getDescription() + ")");
+        }
+        else{
+            lblCustomer.setText(getString(R.string.text_customer) + " " + saleHeader.getCustomer_name());
+        }
     }
 
     void SetDate(){

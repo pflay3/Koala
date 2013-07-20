@@ -35,5 +35,12 @@ public class PaymentTypeHelper {
         String sql = "SELECT id_payment_type, description FROM PaymentTypes";
         return Select(sql);
     }
+
+    public PaymentType SelectById(int id){
+        String sql = "SELECT id_payment_type, description FROM PaymentTypes WHERE id_payment_type = %d";
+        PaymentType[] paymentTypes = Select(String.format(sql, id));
+        if(paymentTypes.length > 0){ return paymentTypes[0]; }
+        else{return null;}
+    }
     //endregion
 }
