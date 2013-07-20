@@ -7,6 +7,8 @@
     <string name="btn_search">Buscar</string>
     <string name="btn_add">+</string>
     <string name="payment_types_extra">Todas</string>
+    <string name="dialog_yes">Si</string>
+    <string name="dialog_no">No</string>
     <!--DataBase-->
     <integer name="db_version">1</integer>
     <!--Home-->
@@ -34,8 +36,6 @@
     <string name="currency_symbol">$</string>
     <string name="product_delete_title">Producto</string>
     <string name="product_delete_message">¿Desea eliminar el producto?</string>
-    <string name="product_delete_yes">Si</string>
-    <string name="product_delete_no">No</string>
     <string name="save_sale_title">Guardar Venta</string>
     <string name="save_sale_error_message">Debe seleccionar el cliente y al menos un producto</string>
     <string name="save_sale_ok">Aceptar</string>
@@ -53,4 +53,6 @@
     <string name="sale_payment_type_question">¿Pagó?</string>
     <string name="sale_payment_type_yes">Si</string>
     <string name="sale_payment_type_no">No</string>
+    <string name="sale_payment_type_change_title">¿Pagó?</string>
+    <string name="sale_payment_type_change_message">¿Desea cambiar el estado del pago?</string>
 </resources>

@@ -134,11 +134,11 @@ public class SaleGUI extends Activity {
         builder.setTitle(getString(R.string.product_delete_title))
                 .setMessage(getString(R.string.product_delete_message))
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .setPositiveButton(getString(R.string.product_delete_yes), new DialogInterface.OnClickListener()
+                .setPositiveButton(getString(R.string.dialog_yes), new DialogInterface.OnClickListener()
                 {
                     public void onClick(DialogInterface dialog, int which){DeleteProduct();}
                 });
-        builder.setNegativeButton(getString(R.string.product_delete_no), new DialogInterface.OnClickListener()
+        builder.setNegativeButton(getString(R.string.dialog_no), new DialogInterface.OnClickListener()
         {
             public void onClick(DialogInterface dialog, int which){dialog.dismiss();}
         });

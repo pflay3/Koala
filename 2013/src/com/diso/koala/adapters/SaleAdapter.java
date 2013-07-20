@@ -1,6 +1,8 @@
 package com.diso.koala.adapters;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import com.diso.koala.interfaces.OnPaymentTypeChangeListener;
 import java.util.ArrayList;
 
 public class SaleAdapter extends ArrayAdapter<SaleHeader> {
+
     Activity context;
     private OnPaymentTypeChangeListener onPaymentTypeChangeListener;
 
@@ -30,7 +33,7 @@ public class SaleAdapter extends ArrayAdapter<SaleHeader> {
 
     public View getView(final int position, View contentView, ViewGroup parent){
         View item = contentView;
-        SaleAdapterHolder saleAdapterHolder;
+        final SaleAdapterHolder saleAdapterHolder;
 
         if (item == null){
             LayoutInflater layoutInflater = context.getLayoutInflater();
@@ -47,7 +50,7 @@ public class SaleAdapter extends ArrayAdapter<SaleHeader> {
             saleAdapterHolder = (SaleAdapterHolder)item.getTag();
         }
 
-        SaleHeader saleHeader = (SaleHeader)getItem(position);
+        SaleHeader saleHeader = getItem(position);
         saleAdapterHolder.lblDate.setText(Functions.GetDate(saleHeader.getDate_sale(), "yyyy-MM-dd"));
         saleAdapterHolder.lblSaleTotal.setText(Functions.GetFloatValueWithTwoDecimals(saleHeader.getTotal()));
 
@@ -57,7 +60,7 @@ public class SaleAdapter extends ArrayAdapter<SaleHeader> {
         saleAdapterHolder.tbPaymentType.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventPaymentType(position, ((ToggleButton)v).isChecked());
+                AskForChangePaymentType(position,((ToggleButton)v).isChecked(), saleAdapterHolder);
             }
         });
 
@@ -70,6 +73,31 @@ public class SaleAdapter extends ArrayAdapter<SaleHeader> {
 
     void EventPaymentType(int position, boolean isChecked){
         onPaymentTypeChangeListener.OnPaymentTypeChange(position, isChecked);
+    }
+
+    void ChangeStatusPaymentType(SaleAdapterHolder saleAdapterHolder){
+        if(saleAdapterHolder != null){
+            saleAdapterHolder.tbPaymentType.setChecked( saleAdapterHolder.tbPaymentType.isChecked() ? false : true );
+        }
+    }
+
+    void AskForChangePaymentType(final int position, final boolean isChecked, final SaleAdapterHolder saleAdapterHolder){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(context.getResources().getString(R.string.sale_payment_type_change_title))
+                .setMessage(context.getResources().getString(R.string.sale_payment_type_change_message))
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton(context.getResources().getString(R.string.dialog_yes), new DialogInterface.OnClickListener()
+                {
+                    public void onClick(DialogInterface dialog, int which){EventPaymentType(position, isChecked);}
+                });
+        builder.setCancelable(false); // Sets whether this dialog is cancelable with the BACK key.
+        builder.setNegativeButton(context.getResources().getString(R.string.dialog_no), new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int which){ChangeStatusPaymentType(saleAdapterHolder); dialog.dismiss();}
+        });
+        AlertDialog alert = builder.create();
+        alert.setCanceledOnTouchOutside(false); // Prevent Cancel outside dialog
+        alert.show();
     }
 
     static class SaleAdapterHolder{
