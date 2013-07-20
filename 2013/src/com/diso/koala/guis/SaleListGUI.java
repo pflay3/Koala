@@ -193,7 +193,7 @@ public class SaleListGUI extends Activity {
                 new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                        StartActivitySaleDetails(position);
                     }
                 }
         );
@@ -229,5 +229,15 @@ public class SaleListGUI extends Activity {
             saleHeader.setId_payment_type(newPaymentType);
             saleHeaderHelper.UpdatePaymentTypeById(saleHeader);
         }
+    }
+
+    void StartActivitySaleDetails(int position){
+        Intent intent = new Intent(SaleListGUI.this, SaleViewGUI.class);
+
+        Bundle bundle = new Bundle();
+        bundle.putInt("id", saleAdapter.getItem(position).getId_sale_header());
+        intent.putExtras(bundle);
+
+        startActivity(intent);
     }
 }

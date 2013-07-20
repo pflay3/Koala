@@ -32,6 +32,7 @@
     <string name="add_product">+ Producto</string>
     <string name="save_sale">Guardar</string>
     <string name="text_customer">Cliente:</string>
+    <string name="text_date_sale">Fecha:</string>
     <string name="product_price">Precio</string>
     <string name="total_sale">Total:</string>
     <string name="currency_symbol">$</string>

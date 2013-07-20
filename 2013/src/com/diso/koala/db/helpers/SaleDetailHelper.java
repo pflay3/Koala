@@ -24,6 +24,9 @@ public class SaleDetailHelper{
         if (c.moveToFirst()) {
             do {
                 saleDetails[pos] = new SaleDetail(c.getInt(0), c.getInt(1));
+                saleDetails[pos].setId_product(c.getInt(2));
+                saleDetails[pos].setProduct_name(c.getString(3));
+                saleDetails[pos].setProduct_price(c.getFloat(4));
                 pos++;
             } while(c.moveToNext());
         }

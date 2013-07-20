@@ -20,5 +20,6 @@
         <activity android:name=".guis.ProductListGUI" android:screenOrientation="portrait"/>
         <activity android:name=".guis.SaleListGUI" android:screenOrientation="portrait" />
         <activity android:name=".guis.AboutGUI" android:screenOrientation="portrait" />
+        <activity android:name=".guis.SaleViewGUI" android:screenOrientation="portrait" />
     </application>
 </manifest>
