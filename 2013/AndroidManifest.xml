@@ -7,17 +7,17 @@
               android:targetSdkVersion="17"/>
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
         <activity android:name=".guis.Home"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".guis.ProductGUI"/>
-        <activity android:name=".guis.SaleGUI"/>
-        <activity android:name=".guis.CustomerListGUI"/>
-        <activity android:name=".guis.CustomerGUI"/>
-        <activity android:name=".guis.ProductListGUI"/>
-        <activity android:name=".guis.SaleListGUI"/>
+        <activity android:name=".guis.ProductGUI" android:screenOrientation="portrait"/>
+        <activity android:name=".guis.SaleGUI" android:screenOrientation="portrait"/>
+        <activity android:name=".guis.CustomerListGUI" android:screenOrientation="portrait"/>
+        <activity android:name=".guis.CustomerGUI" android:screenOrientation="portrait"/>
+        <activity android:name=".guis.ProductListGUI" android:screenOrientation="portrait"/>
+        <activity android:name=".guis.SaleListGUI" android:screenOrientation="portrait" />
     </application>
 </manifest>
