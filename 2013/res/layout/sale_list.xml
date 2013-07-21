@@ -21,9 +21,17 @@
             <Button
                     android:id="@+id/btnAddCustomer"
                     android:layout_width="0dp"
-                    android:layout_weight=".33"
+                    android:layout_weight=".50"
                     android:layout_height="wrap_content"
                     android:text="@string/add_customer"
+                    android:textSize="14sp"/>
+
+            <Button
+                    android:id="@+id/btnSelectDates"
+                    android:layout_width="0dp"
+                    android:layout_weight=".50"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_sale_date_filter"
                     android:textSize="14sp"/>
         </TableRow>
 

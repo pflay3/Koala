@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.ArrayAdapter;
 import com.diso.koala.db.entities.PaymentType;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -87,5 +88,20 @@ public class Functions {
     public static String GetDate(Date date, String format){
         SimpleDateFormat ft = new SimpleDateFormat (format);
         return ft.format( date );
+    }
+
+    /**
+     * Convert String in Date
+     * @param date String with the date
+     * @param format format of input date
+     * @return Date
+     */
+    public static Date GetDate(String date, String format) {
+        SimpleDateFormat ft = new SimpleDateFormat(format);
+        try {
+            return ft.parse( date );
+        } catch (ParseException e) {
+            return new Date();
+        }
     }
 }

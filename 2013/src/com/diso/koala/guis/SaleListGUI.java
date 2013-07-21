@@ -1,8 +1,6 @@
 package com.diso.koala.guis;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -20,10 +18,12 @@ import com.diso.koala.db.helpers.SaleHeaderHelper;
 import com.diso.koala.interfaces.OnPaymentTypeChangeListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class SaleListGUI extends Activity {
 
     //region Var
+    ActionFilter actionFilter;
     TextView lblCustomer, lblTotal;
     Spinner cmbPaymentType;
     int positionProductForDelete = 0;
@@ -35,6 +35,8 @@ public class SaleListGUI extends Activity {
     PaymentType[] paymentTypes;
     ArrayList<SaleHeader> saleHeaders;
     SaleAdapter saleAdapter;
+
+    Date startDate = new Date(), endDate = new Date();
     //endregion
 
     //region Override
@@ -51,7 +53,14 @@ public class SaleListGUI extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(data != null && resultCode == Activity.RESULT_OK){
-            ShowSalesByCustomer(data.getExtras());
+            if(actionFilter == ActionFilter.CUSTOMER){
+                ShowSalesByCustomer(data.getExtras());
+            }
+            else{
+                Bundle bundle = data.getExtras();
+                startDate = Functions.GetDate(bundle.getString("dateStart") + " 00:00:00", "yyyy-MM-dd HH:mm:ss");
+                endDate = Functions.GetDate(bundle.getString("dateEnd") + " 23:59:59", "yyyy-MM-dd HH:mm:ss");
+            }
         }
     }
 
@@ -177,6 +186,22 @@ public class SaleListGUI extends Activity {
     void Events(){
         StartActivity((Button)findViewById(R.id.btnAddCustomer), CustomerListGUI.class);
 
+        final Button btnSelectDates = (Button)findViewById(R.id.btnSelectDates);
+        btnSelectDates.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                actionFilter = ActionFilter.DATES;
+                Intent intent = new Intent(SaleListGUI.this, DateFilterGUI.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("dateStart", Functions.GetDate(startDate, "yyyy-MM-dd"));
+                bundle.putString("dateEnd", Functions.GetDate(endDate, "yyyy-MM-dd"));
+                intent.putExtras(bundle);
+
+                startActivityForResult(intent, 0);
+            }
+        });
+
         final Spinner cmbPaymentType = (Spinner)findViewById(R.id.cmbPaymentType);
         cmbPaymentType.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
             @Override
@@ -204,6 +229,7 @@ public class SaleListGUI extends Activity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        actionFilter = ActionFilter.CUSTOMER;
                         Intent intent = new Intent(SaleListGUI.this, cls);
 
                         Bundle bundle = new Bundle();
@@ -239,5 +265,9 @@ public class SaleListGUI extends Activity {
         intent.putExtras(bundle);
 
         startActivity(intent);
+    }
+
+    enum ActionFilter{
+        CUSTOMER, DATES
     }
 }

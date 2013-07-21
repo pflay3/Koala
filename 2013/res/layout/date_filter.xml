@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <DatePicker android:id="@+id/dpDateStart"
+            android:layout_height="150sp"
+            android:layout_width="wrap_content"
+            android:calendarViewShown="false"
+            android:layout_gravity="center" />
+
+    <DatePicker android:id="@+id/dpDateEnd"
+                android:layout_height="150sp"
+                android:layout_width="wrap_content"
+                android:calendarViewShown="false"
+                android:layout_gravity="center" />
+
+    <TableLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8sp" >
+
+        <TableRow>
+            <Button
+                    android:id="@+id/btnOk"
+                    android:layout_width="0dp"
+                    android:layout_weight=".50"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_ok"
+                    android:textSize="14sp"/>
+
+            <Button
+                    android:id="@+id/btnCancel"
+                    android:layout_width="0dp"
+                    android:layout_weight=".50"
+                    android:layout_height="wrap_content"
+                    android:text="@string/btn_cancel"
+                    android:textSize="14sp"/>
+        </TableRow>
+
+    </TableLayout>
+
+</LinearLayout>

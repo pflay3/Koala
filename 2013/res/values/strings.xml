@@ -4,6 +4,7 @@
     <string name="app_name">DISO Koala</string>
     <string name="name">Nombre</string>
     <string name="btn_ok">Aceptar</string>
+    <string name="btn_cancel">Cancelar</string>
     <string name="btn_search">Buscar</string>
     <string name="btn_add">+</string>
     <string name="payment_types_extra">Todas</string>
@@ -52,6 +53,7 @@
     <!--Sale List-->
     <string name="title_sale_list">Ver Ventas</string>
     <string name="txt_date">Fecha</string>
+    <string name="btn_sale_date_filter">Filtro de Fechas</string>
     <string name="sale_payment_type_question">¿Pagó?</string>
     <string name="sale_payment_type_yes">Si</string>
     <string name="sale_payment_type_no">No</string>
