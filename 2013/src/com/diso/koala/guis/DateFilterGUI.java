@@ -9,9 +9,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import com.diso.koala.Functions;
 import com.diso.koala.R;
-import com.diso.koala.db.helpers.PaymentTypeHelper;
-import com.diso.koala.db.helpers.SaleHeaderHelper;
-
 import java.util.Calendar;
 import java.util.Date;
 
@@ -53,8 +50,10 @@ public class DateFilterGUI extends Activity {
             }
         });
 
-        if(endDate != null){ calendar.setTime(endDate); }
-        SetEndDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        if(endDate != null){
+            calendar.setTime(endDate);
+        }
+        dpDateEnd.updateDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
     }
 
     void SetEndDate(int year, int monthOfYear, int dayOfMonth){

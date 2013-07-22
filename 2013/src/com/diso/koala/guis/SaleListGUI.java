@@ -18,6 +18,7 @@ import com.diso.koala.db.helpers.SaleHeaderHelper;
 import com.diso.koala.interfaces.OnPaymentTypeChangeListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class SaleListGUI extends Activity {
@@ -36,13 +37,14 @@ public class SaleListGUI extends Activity {
     ArrayList<SaleHeader> saleHeaders;
     SaleAdapter saleAdapter;
 
-    Date startDate = new Date(), endDate = new Date();
+    Date startDate, endDate;
     //endregion
 
     //region Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sale_list);
+        SetInitialDates();
         GetFields();
         Events();
         paymentTypeHelper = new PaymentTypeHelper(this);
@@ -60,6 +62,7 @@ public class SaleListGUI extends Activity {
                 Bundle bundle = data.getExtras();
                 startDate = Functions.GetDate(bundle.getString("dateStart") + " 00:00:00", "yyyy-MM-dd HH:mm:ss");
                 endDate = Functions.GetDate(bundle.getString("dateEnd") + " 23:59:59", "yyyy-MM-dd HH:mm:ss");
+                ShowSalesByDateFilter();
             }
         }
     }
@@ -73,43 +76,48 @@ public class SaleListGUI extends Activity {
     //region GUI
 
     void ShowSalesByCustomer(Bundle bundle){
-        ResetGUI();
-        SetCustomer( bundle );
-        GetSalesByCustomer();
+        customer = new Customer(bundle.getInt("id"), bundle.getString("name"));
+        SetCustomer( );
+        CleanSales();
+        GetSales();
         CalculateTotal();
         SetTotal();
         SetSales();
     }
 
     void ShowSalesByPaymentType(){
-        if(customer != null){
-            CleanSales();
-            GetSalesByCustomer();
-            CalculateTotal();
-            SetTotal();
-            SetSales();
-        }
+        SetCustomer( );
+        CleanSales();
+        GetSales();
+        CalculateTotal();
+        SetTotal();
+        SetSales();
     }
 
-    void SetCustomer(Bundle bundle){
-        customer = new Customer(bundle.getInt("id"), bundle.getString("name"));
-        lblCustomer.setText(getString(R.string.text_customer) + " " + customer.getName());
+    void ShowSalesByDateFilter(){
+        SetCustomer( );
+        CleanSales();
+        GetSales();
+        CalculateTotal();
+        SetTotal();
+        SetSales();
     }
 
-    void GetSalesByCustomer( ){
+    void SetCustomer(){
+        if(customer == null){lblCustomer.setText(getString(R.string.text_customer));}
+        else{lblCustomer.setText(getString(R.string.text_customer) + " " + customer.getName());}
+    }
+
+    void GetSales( ){
         ArrayList<QueryFilter> queryFilters = new ArrayList<QueryFilter>();
-        QueryFilter queryFilter = new QueryFilter();
-        queryFilter.setField( "id_customer" );
-        queryFilter.setValue( Integer.toString(customer.getId_customer()) );
-        queryFilters.add( queryFilter );
+        QueryFilter queryFilter = GetFilterDate();
+        queryFilters.add(queryFilter);
 
-        final int idPaymentType = GetIdPaymentTypes();
-        if(idPaymentType != 0){
-            queryFilter = new QueryFilter();
-            queryFilter.setField( "id_payment_type" );
-            queryFilter.setValue( Integer.toString(GetIdPaymentTypes()) );
-            queryFilters.add( queryFilter );
-        }
+        queryFilter = GetFilterCustomer();
+        if(queryFilter != null){ queryFilters.add( queryFilter ); }
+
+        queryFilter = GetFilterPaymentType();
+        if(queryFilter != null){ queryFilters.add( queryFilter ); }
 
         saleHeaders = saleHeaderHelper.SelectByFilter(queryFilters);
     }
@@ -158,27 +166,47 @@ public class SaleListGUI extends Activity {
         }
     }
 
-    void ResetGUI(){
-        // Customer
-        customer = null;
-        lblCustomer.setText(getString(R.string.text_customer));
-
-        // Sales
-        CleanSales();
-
-        // Payment Type
-        //cmbPaymentType.setSelection(0);
-
-        // Total
-        totalSale = 0;
-        SetTotal();
-    }
-
     void CleanSales(){
         if(saleAdapter != null){
             saleAdapter.clear();
             saleAdapter.notifyDataSetChanged();
         }
+    }
+
+    //endregion
+
+    //region Filters
+
+    QueryFilter GetFilterCustomer(){
+        if(customer != null){
+            QueryFilter queryFilter = new QueryFilter();
+            queryFilter.setField( "id_customer" );
+            queryFilter.setValue( Integer.toString(customer.getId_customer()) );
+            return queryFilter;
+        }
+
+        return null;
+    }
+
+    QueryFilter GetFilterPaymentType(){
+        final int idPaymentType = GetIdPaymentTypes();
+        if(idPaymentType != 0){
+            QueryFilter queryFilter = new QueryFilter();
+            queryFilter.setField( "id_payment_type" );
+            queryFilter.setValue( Integer.toString(GetIdPaymentTypes()) );
+            return queryFilter;
+        }
+
+        return null;
+    }
+
+    QueryFilter GetFilterDate(){
+        QueryFilter queryFilter = new QueryFilter();
+        queryFilter.setField( "date_sale" );
+        queryFilter.setValue(Functions.GetDate(startDate, "yyyy-MM-dd HH:mm:ss"));
+        queryFilter.setValue2(Functions.GetDate(endDate, "yyyy-MM-dd HH:mm:ss"));
+        queryFilter.setFilterType( QueryFilter.FilterOption.BETWEEN );
+        return queryFilter;
     }
 
     //endregion
@@ -265,6 +293,14 @@ public class SaleListGUI extends Activity {
         intent.putExtras(bundle);
 
         startActivity(intent);
+    }
+
+    void SetInitialDates(){
+        final Calendar calendar = Calendar.getInstance();
+        String month = calendar.get(Calendar.MONTH) + 1 < 10 ? "0" + Integer.toString(calendar.get(Calendar.MONTH) + 1) : Integer.toString(calendar.get(Calendar.MONTH) + 1);
+        String day = calendar.get(Calendar.DAY_OF_MONTH) < 10 ? "0" + Integer.toString(calendar.get(Calendar.DAY_OF_MONTH)) : Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
+        startDate = Functions.GetDate( String.format("%d-%s-%s 00:00:00", calendar.get(Calendar.YEAR), month, day), "yyyy-MM-dd HH:mm:ss" );
+        endDate = Functions.GetDate( String.format("%d-%s-%s 23:59:59", calendar.get(Calendar.YEAR), month, day), "yyyy-MM-dd HH:mm:ss" );
     }
 
     enum ActionFilter{

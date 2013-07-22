@@ -2,7 +2,7 @@ package com.diso.koala.db;
 
 public class QueryFilter {
     private String field;
-    private String value;
+    private String value, value2;
     private FilterOption filterType = FilterOption.EQUALS;
 
     public String getField() {
@@ -21,6 +21,14 @@ public class QueryFilter {
         this.value = value;
     }
 
+    public String getValue2() {
+        return value2;
+    }
+
+    public void setValue2(String value) {
+        this.value2 = value;
+    }
+
     public FilterOption getFilterType() {
         return filterType;
     }
@@ -33,12 +41,15 @@ public class QueryFilter {
         if (filterType == FilterOption.EQUALS){
             return String.format( "%s = '%s'", field, value );
         }
-        else{
+        else if (filterType == FilterOption.IN){
             return String.format( "%s IN (%s)", field, value );
+        }
+        else{
+            return String.format( "%s BETWEEN '%s' AND '%s'", field, value, value2 );
         }
     }
 
     public enum FilterOption{
-        EQUALS, IN
+        EQUALS, IN, BETWEEN
     }
 }
