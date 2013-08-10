@@ -25,9 +25,9 @@ public class SaleListGUI extends Activity {
 
     //region Var
     ActionFilter actionFilter;
-    TextView lblCustomer, lblTotal;
+    TextView lblTotal;
     Spinner cmbPaymentType;
-    int positionProductForDelete = 0;
+    CheckBox chkCustomer;
     PaymentTypeHelper paymentTypeHelper;
     SaleHeaderHelper saleHeaderHelper;
 
@@ -77,24 +77,18 @@ public class SaleListGUI extends Activity {
 
     void ShowSalesByCustomer(Bundle bundle){
         customer = new Customer(bundle.getInt("id"), bundle.getString("name"));
-        SetCustomer( );
-        CleanSales();
-        GetSales();
-        CalculateTotal();
-        SetTotal();
-        SetSales();
+        ShowSales();
     }
 
     void ShowSalesByPaymentType(){
-        SetCustomer( );
-        CleanSales();
-        GetSales();
-        CalculateTotal();
-        SetTotal();
-        SetSales();
+        ShowSales();
     }
 
     void ShowSalesByDateFilter(){
+        ShowSales();
+    }
+
+    void ShowSales(){
         SetCustomer( );
         CleanSales();
         GetSales();
@@ -104,8 +98,15 @@ public class SaleListGUI extends Activity {
     }
 
     void SetCustomer(){
-        if(customer == null){lblCustomer.setText(getString(R.string.text_customer));}
-        else{lblCustomer.setText(getString(R.string.text_customer) + " " + customer.getName());}
+        if(customer == null){
+            chkCustomer.setText(getString(R.string.text_customer));
+            chkCustomer.setEnabled(false);
+        }
+        else{
+            chkCustomer.setText(getString(R.string.text_customer) + " " + customer.getName());
+            chkCustomer.setEnabled(true);
+            chkCustomer.setChecked(true);
+        }
     }
 
     void GetSales( ){
@@ -159,8 +160,8 @@ public class SaleListGUI extends Activity {
     }
 
     void GetFields(){
-        if(lblCustomer == null){
-            lblCustomer = (TextView)findViewById(R.id.lblCustomer);
+        if(chkCustomer == null){
+            chkCustomer = (CheckBox)findViewById(R.id.chkCustomer);
             lblTotal = (TextView)findViewById(R.id.lblTotal);
             cmbPaymentType = (Spinner)findViewById(R.id.cmbPaymentType);
         }
@@ -227,6 +228,17 @@ public class SaleListGUI extends Activity {
                 intent.putExtras(bundle);
 
                 startActivityForResult(intent, 0);
+            }
+        });
+
+        chkCustomer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!isChecked){
+                    customer = null;
+                    SetCustomer();
+                    ShowSales();
+                }
             }
         });
 
